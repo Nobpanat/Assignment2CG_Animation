@@ -21,7 +21,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         f.setTitle("Assignment 2");
         f.setSize(600, 600);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
+        f.setVisible(true);        
 
         (new Thread(assignment2)).start();
     }
@@ -58,6 +58,10 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         g2.setColor(Color.WHITE);
         g2.fillRect(0, 0, 600, 600);
 
+        Color pinkegg1 = new Color(237, 40, 128);
+        Color pinkegg2 = new Color(235, 146, 189);
+        Color pinkegg3 = new Color(239, 79, 147);
+
 
         // originalTransform
         AffineTransform originalTransform = g2.getTransform();
@@ -69,13 +73,68 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         
         
         //เส้นโค้ง เปลือกไข่
+        g2.setColor(pinkegg1);
+        setPlotSize(2);
         bezierCurve(g2, 295, 352, 227, 356, 207, 450);
         bezierCurve(g2, 207, 450, 194, 506, 235, 549);
         bezierCurve(g2, 235, 549, 269, 572, 295, 571);
         bezierCurve(g2, 295, 571, 350, 578, 382, 519);
         bezierCurve(g2, 382, 519, 407, 472, 375, 411);
         bezierCurve(g2, 375, 411, 352, 356, 295, 352);
-        //รายละเอียดเปลือกไข่
+
+        //รายละเอียดเปลือกไข่        
+        bezierCurve(g2, 319,427,278, 437 , 300 , 481);
+        bezierCurve(g2, 300,481,334, 514 , 356 , 472);
+        bezierCurve(g2, 356,472,368, 430 , 323 , 427);
+        bresenhamLine(g2, 323,427,319,427);   
+
+        bezierCurve(g2, 220,409,252, 430 , 222 , 454);
+        bezierCurve(g2, 222,454,211, 457 , 206 , 454);
+
+        bezierCurve(g2, 244,395,252, 397 , 248 , 406);
+        bezierCurve(g2, 248,406,243, 410 , 239 , 406);
+        bezierCurve(g2, 239,406,235, 399 , 242 , 395);
+        bresenhamLine(g2, 242,395,244,395);
+
+        bezierCurve(g2, 331,368,344, 370 , 340 , 385);
+        bezierCurve(g2, 340,385,336, 396 , 323 , 391);
+        bezierCurve(g2, 323,391,315, 384 , 319 , 374);
+        bezierCurve(g2, 319,374,322, 367 , 328 , 368);
+        bezierCurve(g2, 328,368,334, 369 , 331 , 368); 
+        
+        bezierCurve(g2, 265,481,297, 495 , 275 , 526);
+        bezierCurve(g2, 275,526,257, 544 , 236 , 523);
+        bezierCurve(g2, 236,523,225, 506 , 236 , 492);
+        bezierCurve(g2, 236,492,244, 479 , 260 , 481);
+        bezierCurve(g2, 260,481,276, 483 , 265 , 481);
+
+        bezierCurve(g2, 313,526,334, 525 , 334 , 546);
+        bezierCurve(g2, 334,546,329, 568 , 306 , 556);
+        bezierCurve(g2, 306,556,292, 540 , 309 , 526);
+        bresenhamLine(g2, 309,526,313,526);  
+        
+        g2.setColor(pinkegg2);                    
+
+        bezierCurve(g2, 262,370,296, 355 , 294 , 376);
+        bezierCurve(g2, 294,376,294, 388 , 274 , 396);
+        bezierCurve(g2, 274,396,256, 403 , 251 , 392);
+        bezierCurve(g2, 251,392,248, 381 , 260 , 372);
+        bezierCurve(g2, 260,372,272, 363 , 262 , 370);        
+              
+        g2.setColor(Color.black);  
+        setPlotSize(1); 
+
+        //egg color
+        buffer = floodFill(buffer, 321, 450 + (int)eggMove , Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 220, 430 + (int)eggMove , Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 243, 400 + (int)eggMove , Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 330, 380 + (int)eggMove , Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 256, 506 + (int)eggMove , Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 317, 542 + (int)eggMove , Color.WHITE, pinkegg1);        
+        buffer = floodFill(buffer, 272, 377 + (int)eggMove , Color.WHITE, pinkegg2);
+        buffer = floodFill(buffer, 300, 400 + (int)eggMove , Color.WHITE, pinkegg3);
+
+
         
         g2.setTransform(originalTransform);
 
