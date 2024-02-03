@@ -6,8 +6,13 @@ import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.Queue;
 
+import java.awt.geom.AffineTransform;
 
-public class Assignment2_65050438_65050792 extends JPanel implements Runnable{
+public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
+    //การเคลื่อนที่ของไข่
+    double eggMove = 0;
+    //ความเร็วของไข่แกนY
+    double eggVelocityY = -160;
 
     public static void main(String[] args) {
         Assignment2_65050438_65050792 assignment2 = new Assignment2_65050438_65050792();
@@ -17,11 +22,33 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable{
         f.setSize(600, 600);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
+
+        (new Thread(assignment2)).start();
     }
-    
+
     @Override
     public void run() {
-        
+        double lastTime = System.currentTimeMillis();
+        double currentTime, elapsedTime;
+        double elapsedTotalTime = 0; // เวลาที่ผ่านไปทั้งหมด
+
+        while (true) {
+            currentTime = System.currentTimeMillis();
+            elapsedTime = currentTime - lastTime;
+            lastTime = currentTime;
+            elapsedTotalTime += elapsedTime; // เพิ่มเวลาที่ผ่านไปทั้งหมด
+
+            eggMove += eggVelocityY * elapsedTime / 1000.0;
+
+            if(elapsedTotalTime >= 1000){
+                eggVelocityY = 0;
+            }
+
+
+
+            // Display
+            repaint();
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -32,11 +59,32 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable{
         g2.fillRect(0, 0, 600, 600);
 
 
+        // originalTransform
+        AffineTransform originalTransform = g2.getTransform();
+        g2.setColor(Color.black);
+
+        // เคลื่อนที่เปลือกไข่
+        g2.setTransform(new AffineTransform(1, 0, 0, 1, 0, eggMove));
+        
+        
+        
+        //เส้นโค้ง เปลือกไข่
+        bezierCurve(g2, 295, 352, 227, 356, 207, 450);
+        bezierCurve(g2, 207, 450, 194, 506, 235, 549);
+        bezierCurve(g2, 235, 549, 269, 572, 295, 571);
+        bezierCurve(g2, 295, 571, 350, 578, 382, 519);
+        bezierCurve(g2, 382, 519, 407, 472, 375, 411);
+        bezierCurve(g2, 375, 411, 352, 356, 295, 352);
+        //รายละเอียดเปลือกไข่
+        
+        g2.setTransform(originalTransform);
+        System.out.println(g2.getTransform());
+
+
+        
         g.drawImage(buffer, 0, 0, null);
 
     }
-
-
 
     private int plotSize = 1;
 
@@ -182,6 +230,5 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable{
         g.drawPolygon(poly);
 
     }
-
 
 }
