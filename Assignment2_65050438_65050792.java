@@ -78,7 +78,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         //รายละเอียดเปลือกไข่
         
         g2.setTransform(originalTransform);
-        System.out.println(g2.getTransform());
+        // System.out.println(g2.getTransform());
 
 
         
