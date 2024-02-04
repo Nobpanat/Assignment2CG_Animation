@@ -32,7 +32,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         f.setTitle("Assignment 2");
         f.setSize(600, 600);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);        
+        f.setVisible(true);
 
         (new Thread(assignment2)).start();
     }
@@ -57,6 +57,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 eggVelocityY = 0;
             }
 
+            // การเคลื่อนที่ของเปลือกไข่ซ้ายและขวา
             eggShellMoveLeft += eggShellVelocityLeft * elapsedTime / 1000.0;
             eggShellMoveRight += eggShellVelocityRight * elapsedTime / 1000.0;
 
@@ -76,7 +77,6 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         Color pinkegg2 = new Color(235, 146, 189);
         Color pinkegg3 = new Color(239, 79, 147);
 
-
         // originalTransform
         AffineTransform originalTransform = g2.getTransform();
         g2.setColor(Color.black);
@@ -85,10 +85,6 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         g2.setTransform(new AffineTransform(1, 0, 0, 1, 0, eggMove));
 
         // เส้นโค้ง เปลือกไข่
-        
-        
-        
-        //เส้นโค้ง เปลือกไข่
         g2.setColor(pinkegg1);
         setPlotSize(2);
         bezierCurve(g2, 295, 352, 227, 356, 207, 450);
@@ -98,66 +94,64 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         bezierCurve(g2, 382, 519, 407, 472, 375, 411);
         bezierCurve(g2, 375, 411, 352, 356, 295, 352);
 
-        //รายละเอียดเปลือกไข่        
-        bezierCurve(g2, 319,427,278, 437 , 300 , 481);
-        bezierCurve(g2, 300,481,334, 514 , 356 , 472);
-        bezierCurve(g2, 356,472,368, 430 , 323 , 427);
-        bresenhamLine(g2, 323,427,319,427);   
+        // รายละเอียดเปลือกไข่
+        bezierCurve(g2, 319, 427, 278, 437, 300, 481);
+        bezierCurve(g2, 300, 481, 334, 514, 356, 472);
+        bezierCurve(g2, 356, 472, 368, 430, 323, 427);
+        bresenhamLine(g2, 323, 427, 319, 427);
 
-        bezierCurve(g2, 220,409,252, 430 , 222 , 454);
-        bezierCurve(g2, 222,454,211, 457 , 206 , 454);
+        bezierCurve(g2, 220, 409, 252, 430, 222, 454);
+        bezierCurve(g2, 222, 454, 211, 457, 206, 454);
 
-        bezierCurve(g2, 244,395,252, 397 , 248 , 406);
-        bezierCurve(g2, 248,406,243, 410 , 239 , 406);
-        bezierCurve(g2, 239,406,235, 399 , 242 , 395);
-        bresenhamLine(g2, 242,395,244,395);
+        bezierCurve(g2, 244, 395, 252, 397, 248, 406);
+        bezierCurve(g2, 248, 406, 243, 410, 239, 406);
+        bezierCurve(g2, 239, 406, 235, 399, 242, 395);
+        bresenhamLine(g2, 242, 395, 244, 395);
 
-        bezierCurve(g2, 331,368,344, 370 , 340 , 385);
-        bezierCurve(g2, 340,385,336, 396 , 323 , 391);
-        bezierCurve(g2, 323,391,315, 384 , 319 , 374);
-        bezierCurve(g2, 319,374,322, 367 , 328 , 368);
-        bezierCurve(g2, 328,368,334, 369 , 331 , 368); 
-        
-        bezierCurve(g2, 265,481,297, 495 , 275 , 526);
-        bezierCurve(g2, 275,526,257, 544 , 236 , 523);
-        bezierCurve(g2, 236,523,225, 506 , 236 , 492);
-        bezierCurve(g2, 236,492,244, 479 , 260 , 481);
-        bezierCurve(g2, 260,481,276, 483 , 265 , 481);
+        bezierCurve(g2, 331, 368, 344, 370, 340, 385);
+        bezierCurve(g2, 340, 385, 336, 396, 323, 391);
+        bezierCurve(g2, 323, 391, 315, 384, 319, 374);
+        bezierCurve(g2, 319, 374, 322, 367, 328, 368);
+        bezierCurve(g2, 328, 368, 334, 369, 331, 368);
 
-        bezierCurve(g2, 313,526,334, 525 , 334 , 546);
-        bezierCurve(g2, 334,546,329, 568 , 306 , 556);
-        bezierCurve(g2, 306,556,292, 540 , 309 , 526);
-        bresenhamLine(g2, 309,526,313,526);  
-        
-        g2.setColor(pinkegg2);                    
+        bezierCurve(g2, 265, 481, 297, 495, 275, 526);
+        bezierCurve(g2, 275, 526, 257, 544, 236, 523);
+        bezierCurve(g2, 236, 523, 225, 506, 236, 492);
+        bezierCurve(g2, 236, 492, 244, 479, 260, 481);
+        bezierCurve(g2, 260, 481, 276, 483, 265, 481);
 
-        bezierCurve(g2, 262,370,296, 355 , 294 , 376);
-        bezierCurve(g2, 294,376,294, 388 , 274 , 396);
-        bezierCurve(g2, 274,396,256, 403 , 251 , 392);
-        bezierCurve(g2, 251,392,248, 381 , 260 , 372);
-        bezierCurve(g2, 260,372,272, 363 , 262 , 370);        
-              
-        g2.setColor(Color.black);  
-        setPlotSize(1); 
+        bezierCurve(g2, 313, 526, 334, 525, 334, 546);
+        bezierCurve(g2, 334, 546, 329, 568, 306, 556);
+        bezierCurve(g2, 306, 556, 292, 540, 309, 526);
+        bresenhamLine(g2, 309, 526, 313, 526);
 
-        //egg color
-        buffer = floodFill(buffer, 321, 450 + (int)eggMove , Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 220, 430 + (int)eggMove , Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 243, 400 + (int)eggMove , Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 330, 380 + (int)eggMove , Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 256, 506 + (int)eggMove , Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 317, 542 + (int)eggMove , Color.WHITE, pinkegg1);        
-        buffer = floodFill(buffer, 272, 377 + (int)eggMove , Color.WHITE, pinkegg2);
-        buffer = floodFill(buffer, 300, 400 + (int)eggMove , Color.WHITE, pinkegg3);
+        g2.setColor(pinkegg2);
 
+        bezierCurve(g2, 262, 370, 296, 355, 294, 376);
+        bezierCurve(g2, 294, 376, 294, 388, 274, 396);
+        bezierCurve(g2, 274, 396, 256, 403, 251, 392);
+        bezierCurve(g2, 251, 392, 248, 381, 260, 372);
+        bezierCurve(g2, 260, 372, 272, 363, 262, 370);
 
-        
+        g2.setColor(Color.black);
+        setPlotSize(1);
+
+        // egg color
+        buffer = floodFill(buffer, 321, 450 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 220, 430 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 243, 400 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 330, 380 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 256, 506 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 317, 542 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 272, 377 + (int) eggMove, Color.WHITE, pinkegg2);
+        buffer = floodFill(buffer, 300, 400 + (int) eggMove, Color.WHITE, pinkegg3);
+
         g2.setTransform(originalTransform);
         // ลงสีเปลือกไข่
         buffer = floodFill(buffer, 266, 432 + (int) eggMove, Color.WHITE, new Color(253, 75, 149));
 
         // แยกเปลือกไข่ออก 2 ส่วน
-        if (totalTime >= 1100) {
+        if (totalTime >= 1300) {
             g2.setColor(Color.WHITE);
             g2.fillRect(0, 0, 600, 600);
 
@@ -186,8 +180,22 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bresenhamLine(g2, 318, 272, 274, 229);
             bresenhamLine(g2, 274, 229, 292, 195);
             // รายละเอียดไข่ ซีกขวา
-
+            
             g2.setTransform(originalTransform);
+            
+            if (totalTime >= 2200) {
+    
+                AffineTransform moveLegS1 = new AffineTransform(
+                        Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
+                        -Math.sin(Math.toRadians(30)), Math.cos(Math.toRadians(30)),
+                        311, 347);
+    
+                AffineTransform moveLegS2 = new AffineTransform(1, 0, 0, 1, -311, -347);
+                
+                moveLegS1.concatenate(moveLegS2);
+                g2.setTransform(moveLegS1);
+                
+            }
             // หัวนกด้านนอก
             bezierCurve(g2, 306, 179, 291, 179, 285, 197);
             bezierCurve(g2, 285, 197, 247, 234, 285, 270);
@@ -203,7 +211,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
             // รายละเอียดหัวด้านใน
 
-            // ปีกขวา
+            // ปีกขวาของนก
             bresenhamLine(g2, 282, 268, 282, 274);
             bezierCurve(g2, 282, 274, 266, 289, 257, 318);
             bezierCurve(g2, 257, 318, 252, 321, 250, 326);
@@ -216,7 +224,6 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bezierCurve(g2, 268, 352, 310, 335, 308, 313);
             bezierCurve(g2, 308, 313, 313, 297, 303, 280);
             bresenhamLine(g2, 303, 280, 304, 276);
-          
 
             // รายละเอียดปีกขวา
 
@@ -224,7 +231,47 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bezierCurve(g2, 273, 349, 322, 353, 341, 338);
             bezierCurve(g2, 341, 338, 361, 321, 360, 312);
             bezierCurve(g2, 360, 312, 367, 283, 358, 270);
-            // bezierCurve(g2, 358, 270, 349, 257, 273, 349);
+
+            // ลำตัวไม่มีรายละเอียดด้านใน
+            // ปีกซ้ายของนก
+            bezierCurve(g2, 360, 262, 367, 265, 369, 284);
+            bezierCurve(g2, 369, 284, 369, 303, 360, 312);
+
+
+            // ต้นขาซ้ายของนก
+            bezierCurve(g2, 341, 338, 346, 353, 335, 359);
+            bezierCurve(g2, 335, 359, 322, 360, 321, 357);
+            bezierCurve(g2, 321, 357, 313, 355, 313, 348);
+            // ต้นขาซ้ายนกไม่มีรายละเอียด
+            // เท้าซ้ายของนก
+            bresenhamLine(g2, 333, 359, 333, 364);
+            bezierCurve(g2, 333, 364, 354, 366, 355, 374);
+            bezierCurve(g2, 355, 374, 356, 386, 344, 383);
+            bezierCurve(g2, 344, 383, 332, 383, 324, 373);
+            bezierCurve(g2, 324, 373, 309, 371, 312, 364);
+            bezierCurve(g2, 312, 364, 313, 359, 320, 362);
+            bresenhamLine(g2, 320, 362, 319, 356);
+
+            // รายละเอียดเท้าซ้ายนก
+
+            // ต้นขาขวาของนก
+            bezierCurve(g2, 308, 348, 309, 362, 300, 366);
+            bresenhamLine(g2, 300, 366, 287, 365);
+            bezierCurve(g2, 287, 365, 278, 357, 277, 350);
+            // ต้นขวาไม่มีรายละเอียด
+
+            // เท้าขวาของนก
+            bresenhamLine(g2, 298, 366, 298, 372);
+            bezierCurve(g2, 298, 372, 320, 372, 321, 379);
+            bezierCurve(g2, 321, 379, 322, 393, 311, 390);
+            bezierCurve(g2, 311, 390, 300, 390, 297, 387);
+            bezierCurve(g2, 297, 387, 292, 382, 291, 381);
+            bezierCurve(g2, 291, 381, 280, 380, 279, 375);
+            bezierCurve(g2, 279, 375, 278, 368, 287, 371);
+            bresenhamLine(g2, 287, 371, 287, 365);
+
+            // รายละเอียดเท้าขวานก
+
         }
 
         // if(totalTime > 0){
