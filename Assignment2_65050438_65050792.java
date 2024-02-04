@@ -119,6 +119,16 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         bezierCurve(g2, 236, 523, 225, 506, 236, 492);
         bezierCurve(g2, 236, 492, 244, 479, 260, 481);
         bezierCurve(g2, 260, 481, 276, 483, 265, 481);
+        bezierCurve(g2, 313, 526, 334, 525, 334, 546);
+        bezierCurve(g2, 334, 546, 329, 568, 306, 556);
+        bezierCurve(g2, 306, 556, 292, 540, 309, 526);
+        bresenhamLine(g2, 309, 526, 313, 526);
+
+        g2.setColor(pinkegg2);
+        bezierCurve(g2, 244, 395, 252, 397, 248, 406);
+        bezierCurve(g2, 248, 406, 243, 410, 239, 406);
+        bezierCurve(g2, 239, 406, 235, 399, 242, 395);
+        bresenhamLine(g2, 242, 395, 244, 395);
 
         bezierCurve(g2, 313, 526, 334, 525, 334, 546);
         bezierCurve(g2, 334, 546, 329, 568, 306, 556);
@@ -126,6 +136,15 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         bresenhamLine(g2, 309, 526, 313, 526);
 
         g2.setColor(pinkegg2);
+        // egg color
+        buffer = floodFill(buffer, 321, 450 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 220, 430 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 243, 400 + (int) eggMove, Color.WHITE, pinkegg2);
+        buffer = floodFill(buffer, 330, 380 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 256, 506 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 317, 542 + (int) eggMove, Color.WHITE, pinkegg1);
+        buffer = floodFill(buffer, 272, 377 + (int) eggMove, Color.WHITE, pinkegg2);
+        buffer = floodFill(buffer, 300, 400 + (int) eggMove, Color.WHITE, pinkegg3);
 
         bezierCurve(g2, 262, 370, 296, 355, 294, 376);
         bezierCurve(g2, 294, 376, 294, 388, 274, 396);
@@ -156,7 +175,8 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             g2.fillRect(0, 0, 600, 600);
 
             // เปลือกไข่ ซีกซ้าย
-            g2.setColor(Color.black);
+            g2.setColor(pinkegg1);
+            setPlotSize(2);
             g2.setTransform(new AffineTransform(1, 0, 0, 1, eggShellMoveLeft, 0));
             bezierCurve(g2, 292, 195, 227, 191, 207, 288);
             bezierCurve(g2, 207, 288, 189, 345, 226, 382);
@@ -166,8 +186,76 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bresenhamLine(g2, 271, 324, 318, 272);
             bresenhamLine(g2, 318, 272, 274, 229);
             bresenhamLine(g2, 274, 229, 292, 195);
-            g2.setTransform(originalTransform);
+
+            bezierCurve(g2, 278, 350, 278, 363, 268, 373, 256, 373);
+            bezierCurve(g2, 256, 373, 243, 373, 233, 363, 233, 350);
+            bezierCurve(g2, 233, 350, 233, 337, 243, 327, 256, 327);
+            bezierCurve(g2, 256, 327, 268, 327, 278, 337, 278, 350);
+
+            bezierCurve(g2, 219, 253, 239, 258, 233, 282);
+            bezierCurve(g2, 233, 282, 229, 305, 205, 296);
+
+            g2.setColor(pinkegg2);
+
+            bezierCurve(g2, 252, 245, 252, 250, 248, 253, 244, 253);
+            bezierCurve(g2, 244, 253, 239, 253, 236, 250, 236, 245);
+            bezierCurve(g2, 236, 245, 236, 241, 239, 237, 244, 237);
+            bezierCurve(g2, 244, 237, 248, 237, 252, 241, 252, 245);
+
+            bezierCurve(g2, 284, 207, 266, 204, 252, 227);
+            bezierCurve(g2, 252, 227, 245, 242, 264, 242);
+            bezierCurve(g2, 264, 242, 275, 241, 280, 236);
+
+            g2.setColor(pinkegg1);
+
             // รายละเอียดไข่ซีกซ้าย
+            int colorEggShellLeft1 = 314 + (int) eggShellMoveLeft;
+            int colorEggShellLeft2 = 288 + (int) eggShellMoveLeft;
+            int colorEggShellLeft3 = 314 + (int) eggShellMoveLeft;
+            int colorEggcircleLeft1 = 266 + (int) eggShellMoveLeft;
+            int colorEggcircleLeft2 = 225 + (int) eggShellMoveLeft;
+            int colorEggcircleLeft3 = 243 + (int) eggShellMoveLeft;
+            int colorEggcircleLeft4 = 254 + (int) eggShellMoveLeft;
+
+            if (colorEggShellLeft1 <= 1 | colorEggShellLeft3 <= 1) {
+                colorEggShellLeft1 = 1;
+                colorEggcircleLeft1 = 1;
+                colorEggcircleLeft2 = 1;
+                colorEggcircleLeft3 = 1;
+                colorEggcircleLeft4 = 1;
+
+                buffer = floodFill(buffer, colorEggShellLeft1, 271, pinkegg3, Color.white);
+                buffer = floodFill(buffer, colorEggcircleLeft1, 342, pinkegg1, Color.white);
+                buffer = floodFill(buffer, colorEggcircleLeft2, 342, pinkegg1, Color.white);
+                buffer = floodFill(buffer, colorEggcircleLeft3, 241, pinkegg2, Color.white);
+                buffer = floodFill(buffer, colorEggcircleLeft4, 231, pinkegg2, Color.white);
+
+            } else {
+                buffer = floodFill(buffer, colorEggShellLeft1, 271, Color.WHITE, pinkegg3);
+                buffer = floodFill(buffer, colorEggcircleLeft1, 342, Color.WHITE, pinkegg1);
+                buffer = floodFill(buffer, colorEggcircleLeft2, 271, Color.WHITE, pinkegg1);
+                buffer = floodFill(buffer, colorEggcircleLeft3, 241, Color.WHITE, pinkegg2);
+                buffer = floodFill(buffer, colorEggcircleLeft4, 231, Color.WHITE, pinkegg2);
+
+            }
+            if (colorEggShellLeft2 <= 1) {
+                colorEggShellLeft2 = 1;
+
+                buffer = floodFill(buffer, colorEggShellLeft2, 196, pinkegg3, Color.white);
+
+            } else {
+                buffer = floodFill(buffer, colorEggShellLeft2, 196, Color.WHITE, pinkegg3);
+
+            }
+            if (colorEggShellLeft3 <= 1) {
+                colorEggShellLeft3 = 1;
+                buffer = floodFill(buffer, colorEggShellLeft3, 370, pinkegg3, Color.white);
+
+            } else {
+                buffer = floodFill(buffer, colorEggShellLeft3, 370, Color.WHITE, pinkegg3);
+            }
+
+            g2.setTransform(originalTransform);
 
             // เปลือกไข่ ซึกขวา
             g2.setTransform(new AffineTransform(1, 0, 0, 1, eggShellMoveRight, 0));
@@ -179,7 +267,76 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bresenhamLine(g2, 271, 324, 318, 272);
             bresenhamLine(g2, 318, 272, 274, 229);
             bresenhamLine(g2, 274, 229, 292, 195);
+
+            bezierCurve(g2, 342, 224, 342, 230, 336, 236, 330, 236);
+            bezierCurve(g2, 330, 236, 323, 236, 318, 230, 318, 224);
+            bezierCurve(g2, 318, 224, 318, 217, 323, 212, 330, 212);
+            bezierCurve(g2, 330, 212, 336, 212, 342, 217, 342, 224);
+
+            bezierCurve(g2, 374, 310, 374, 328, 360, 342, 342, 342);
+            bezierCurve(g2, 342, 342, 324, 342, 310, 328, 310, 310);
+            bezierCurve(g2, 310, 310, 310, 292, 324, 278, 342, 278);
+            bezierCurve(g2, 342, 278, 360, 278, 374, 292, 374, 310);
+
+            bezierCurve(g2, 350, 383, 350, 391, 343, 398, 334, 398);
+            bezierCurve(g2, 334, 398, 326, 398, 319, 391, 319, 383);
+            bezierCurve(g2, 319, 383, 319, 374, 326, 368, 334, 368);
+            bezierCurve(g2, 334, 368, 343, 368, 350, 374, 350, 383);
+
+            g2.setColor(pinkegg2);
+
+            bezierCurve(g2, 286, 207, 308, 212, 281, 236);
+
+            g2.setColor(pinkegg1);
+
             // รายละเอียดไข่ ซีกขวา
+            int colorEggShellRight1 = 276 + (int) eggShellMoveRight;
+            int colorEggShellRight2 = 280 + (int) eggShellMoveRight;
+            int colorEggShellRight3 = 300 + (int) eggShellMoveRight;
+            int colorEggcircleRight1 = 321 + (int) eggShellMoveRight;
+            int colorEggcircleRight2 = 333 + (int) eggShellMoveRight;
+            int colorEggcircleRight3 = 323 + (int) eggShellMoveRight;
+            int colorEggcircleRight4 = 290 + (int) eggShellMoveRight;
+
+            if (colorEggShellRight1 >= 599 | colorEggShellRight3 >= 599) {
+                colorEggShellRight1 = 599;
+                colorEggcircleRight1 = 599;
+                colorEggcircleRight4 = 599;
+
+                buffer = floodFill(buffer, colorEggShellRight1, 227, pinkegg3, Color.white);
+                buffer = floodFill(buffer, colorEggcircleRight1, 221, pinkegg1, Color.white);
+                buffer = floodFill(buffer, colorEggcircleRight4, 219, pinkegg2, Color.white);
+
+            } else {
+                buffer = floodFill(buffer, colorEggShellRight1, 227, Color.WHITE, pinkegg3);
+                buffer = floodFill(buffer, colorEggcircleRight1, 221, Color.WHITE, pinkegg1);
+                buffer = floodFill(buffer, colorEggcircleRight4, 219, Color.WHITE, pinkegg2);
+
+            }
+            if (colorEggShellRight2 >= 599) {
+                colorEggShellRight2 = 599;
+                colorEggcircleRight2 = 599;
+
+                buffer = floodFill(buffer, colorEggShellRight2, 323, pinkegg3, Color.white);
+                buffer = floodFill(buffer, colorEggcircleRight2, 300, pinkegg1, Color.white);
+
+            } else {
+                buffer = floodFill(buffer, colorEggShellRight2, 323, Color.WHITE, pinkegg3);
+                buffer = floodFill(buffer, colorEggcircleRight2, 300, Color.WHITE, pinkegg1);
+
+            }
+            if (colorEggShellRight3 >= 599) {
+                colorEggShellRight3 = 599;
+                colorEggcircleRight3 = 599;
+
+                buffer = floodFill(buffer, colorEggShellRight3, 411, pinkegg3, Color.white);
+                buffer = floodFill(buffer, colorEggcircleRight3, 382, pinkegg1, Color.white);
+
+            } else {
+                buffer = floodFill(buffer, colorEggShellRight3, 411, Color.WHITE, pinkegg3);
+                buffer = floodFill(buffer, colorEggcircleRight3, 382, Color.WHITE, pinkegg1);
+
+            }
 
             g2.setTransform(originalTransform);
 
@@ -196,6 +353,8 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 g2.setTransform(moveLegS1);
 
             }
+            g2.setColor(Color.black);
+            setPlotSize(1);
             // หัวนกด้านนอก
             bezierCurve(g2, 306, 179, 291, 179, 285, 197);
             bezierCurve(g2, 285, 197, 247, 234, 285, 270);
@@ -240,8 +399,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bezierCurve(g2, 308, 313, 313, 297, 303, 280);
             bresenhamLine(g2, 303, 280, 304, 276);
 
-            bezierCurve(g2, 278, 276, 300, 271, 304, 282);
-
+            bresenhamLine(g2, 303, 280, 304, 276);
             // รายละเอียดปีกขวา
             if (totalTime >= 3000) {
                 g2.setTransform(originalTransform);
@@ -357,7 +515,6 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         // }
 
         g.drawImage(buffer, 0, 0, null);
-
     }
 
     private int plotSize = 1;
