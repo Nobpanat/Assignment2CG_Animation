@@ -180,27 +180,26 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bresenhamLine(g2, 318, 272, 274, 229);
             bresenhamLine(g2, 274, 229, 292, 195);
             // รายละเอียดไข่ ซีกขวา
-            
+
             g2.setTransform(originalTransform);
-            
+
             if (totalTime >= 2200) {
-    
+
                 AffineTransform moveLegS1 = new AffineTransform(
                         Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
                         -Math.sin(Math.toRadians(30)), Math.cos(Math.toRadians(30)),
                         311, 347);
-    
+
                 AffineTransform moveLegS2 = new AffineTransform(1, 0, 0, 1, -311, -347);
-                
+
                 moveLegS1.concatenate(moveLegS2);
                 g2.setTransform(moveLegS1);
-                
+
             }
             // หัวนกด้านนอก
             bezierCurve(g2, 306, 179, 291, 179, 285, 197);
             bezierCurve(g2, 285, 197, 247, 234, 285, 270);
-            bezierCurve(g2, 285, 270, 288, 277, 293, 270);
-            bezierCurve(g2, 293, 270, 292, 277, 302, 273);
+
             bezierCurve(g2, 302, 273, 310, 291, 321, 271);
             bezierCurve(g2, 321, 271, 333, 289, 345, 268);
             bezierCurve(g2, 345, 268, 369, 279, 358, 258);
@@ -209,10 +208,26 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bezierCurve(g2, 345, 174, 327, 172, 323, 187);
             bezierCurve(g2, 323, 187, 313, 177, 306, 179);
 
+            bezierCurve(g2, 283, 268, 293, 276, 303, 272);
+
             // รายละเอียดหัวด้านใน
 
+            if (totalTime >= 3000) {
+                g2.setTransform(originalTransform);
+
+                AffineTransform moveWing1 = new AffineTransform(
+                        Math.cos(Math.toRadians(60)), Math.sin(Math.toRadians(60)),
+                        -Math.sin(Math.toRadians(60)), Math.cos(Math.toRadians(60)),
+                        301, 267);
+
+                AffineTransform moveWing2 = new AffineTransform(1, 0, 0, 1, -301, -267);
+
+                moveWing1.concatenate(moveWing2);
+                g2.setTransform(moveWing1);
+
+            }
             // ปีกขวาของนก
-            bresenhamLine(g2, 282, 268, 282, 274);
+            // bresenhamLine(g2, 282, 268, 282, 274);
             bezierCurve(g2, 282, 274, 266, 289, 257, 318);
             bezierCurve(g2, 257, 318, 252, 321, 250, 326);
             bezierCurve(g2, 250, 326, 249, 328, 250, 330);
@@ -225,18 +240,37 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bezierCurve(g2, 308, 313, 313, 297, 303, 280);
             bresenhamLine(g2, 303, 280, 304, 276);
 
+            bezierCurve(g2, 278, 276, 300, 271, 304, 282);
+
             // รายละเอียดปีกขวา
+            if (totalTime >= 3000) {
+                g2.setTransform(originalTransform);
+
+                AffineTransform moveLegS1 = new AffineTransform(
+                        Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
+                        -Math.sin(Math.toRadians(30)), Math.cos(Math.toRadians(30)),
+                        311, 347);
+
+                AffineTransform moveLegS2 = new AffineTransform(1, 0, 0, 1, -311, -347);
+
+                moveLegS1.concatenate(moveLegS2);
+                g2.setTransform(moveLegS1);
+            }
 
             // ลำตัวนก
             bezierCurve(g2, 273, 349, 322, 353, 341, 338);
             bezierCurve(g2, 341, 338, 361, 321, 360, 312);
             bezierCurve(g2, 360, 312, 367, 283, 358, 270);
 
+            // ลำตัวส่วนชิดปีกขวานก
+            bresenhamLine(g2, 302, 273, 300, 280);
+            bezierCurve(g2, 300, 280, 312, 287, 308, 310);
+            bezierCurve(g2, 308, 310, 308, 336, 273, 349);
+
             // ลำตัวไม่มีรายละเอียดด้านใน
             // ปีกซ้ายของนก
             bezierCurve(g2, 360, 262, 367, 265, 369, 284);
             bezierCurve(g2, 369, 284, 369, 303, 360, 312);
-
 
             // ต้นขาซ้ายของนก
             bezierCurve(g2, 341, 338, 346, 353, 335, 359);
@@ -271,6 +305,48 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bresenhamLine(g2, 287, 371, 287, 365);
 
             // รายละเอียดเท้าขวานก
+
+            // ดวงอาทิตย์
+            g2.setTransform(originalTransform);
+            midpointCircle(g2, 518, 65, 25);
+            createTrianglePolygon(g2, 489, 57, 471, 65, 489, 73);
+            createTrianglePolygon(g2, 489, 73, 477, 87, 495, 85);
+            createTrianglePolygon(g2, 495, 85, 493, 104, 508, 94);
+            createTrianglePolygon(g2, 508, 94, 516, 110, 524, 95);
+            createTrianglePolygon(g2, 524, 95, 538, 105, 538, 89);
+            createTrianglePolygon(g2, 538, 89, 557, 90, 547, 76);
+            createTrianglePolygon(g2, 547, 76, 563, 68, 548, 60);
+            createTrianglePolygon(g2, 548, 60, 558, 45, 541, 48);
+            createTrianglePolygon(g2, 541, 48, 542, 28, 529, 38);
+            createTrianglePolygon(g2, 529, 38, 519, 21, 512, 38);
+            createTrianglePolygon(g2, 512, 38, 496, 26, 497, 44);
+            createTrianglePolygon(g2, 497, 44, 479, 42, 489, 57);
+
+            // เมฆด้านบน
+            bezierCurve(g2, 498, 130, 480, 128, 479, 144);
+            bezierCurve(g2, 479, 144, 463, 146, 473, 157);
+            bezierCurve(g2, 473, 157, 476, 163, 488, 159);
+            bezierCurve(g2, 488, 159, 504, 167, 515, 159);
+            bezierCurve(g2, 515, 159, 532, 168, 543, 156);
+            bezierCurve(g2, 543, 156, 559, 160, 558, 146);
+            bezierCurve(g2, 558, 146, 560, 141, 547, 139);
+            bezierCurve(g2, 547, 139, 546, 131, 533, 130);
+            bezierCurve(g2, 533, 130, 529, 120, 514, 120);
+            bezierCurve(g2, 514, 120, 502, 121, 498, 130);
+
+            // เมฆด้านล่าง
+            bezierCurve(g2, 105, 459, 86, 458, 86, 473);
+            bezierCurve(g2, 86, 473, 68, 477, 81, 488);
+            bezierCurve(g2, 81, 488, 86, 491, 95, 488);
+            bezierCurve(g2, 95, 488, 106, 493, 110, 491);
+            bezierCurve(g2, 110, 491, 120, 491, 122, 488);
+            bezierCurve(g2, 122, 488, 129, 492, 138, 491);
+            bezierCurve(g2, 138, 491, 147, 490, 149, 486);
+            bezierCurve(g2, 149, 486, 167, 487, 165, 475);
+            bezierCurve(g2, 165, 475, 165, 468, 154, 468);
+            bezierCurve(g2, 154, 468, 154, 461, 141, 459);
+            bezierCurve(g2, 141, 459, 138, 450, 121, 449);
+            bezierCurve(g2, 121, 449, 109, 450, 105, 459);
 
         }
 
