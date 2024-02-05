@@ -478,7 +478,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bezierCurve(g2, 300, 280, 312, 287, 308, 310);
             bezierCurve(g2, 308, 310, 308, 336, 273, 349);
 
-            bezierCurve(g2, 276, 348, 253, 324, 283, 274);
+            bezierCurve(g2, 276,348,257, 329 , 284 , 267);
 
             // ลำตัวไม่มีรายละเอียดด้านใน
             // ปีกซ้ายของนก
