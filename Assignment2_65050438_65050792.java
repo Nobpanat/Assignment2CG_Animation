@@ -19,9 +19,9 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
     // การเคลื่อนที่เปลือกไข่ขวา
     double eggShellMoveRight = 0;
     // ความเร็วเปลือกไข่ซ้ายแกนX
-    double eggShellVelocityLeft = -100;
+    double eggShellVelocityLeft = -320;
     // ความเร็วเปลือกไข่ขวาแกนX
-    double eggShellVelocityRight = 100;
+    double eggShellVelocityRight = 320;
 
     // การเคลื่อนที่เมฆ
     double cloudMove1 = 0;
@@ -56,16 +56,23 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             elapsedTotalTime += elapsedTime; // เพิ่มเวลาที่ผ่านไปทั้งหมด
             totalTime = elapsedTotalTime;
 
-            eggMove += eggVelocityY * elapsedTime / 1000.0;
-
+            
             // ครบ1วินาทีหยุดเคลื่อนเปลือกไข่ขึ้นไป
             if (elapsedTotalTime >= 1000) {
-                eggVelocityY = 0;
+                eggMove += eggVelocityY * elapsedTime / 1000.0;
+                if(elapsedTotalTime >= 2000){
+
+                    eggVelocityY = 0;
+                }
+            }
+            if(elapsedTotalTime >= 2300){
+
+                // การเคลื่อนที่ของเปลือกไข่ซ้ายและขวา
+                eggShellMoveLeft += eggShellVelocityLeft * elapsedTime / 1000.0;
+                eggShellMoveRight += eggShellVelocityRight * elapsedTime / 1000.0;
+
             }
 
-            // การเคลื่อนที่ของเปลือกไข่ซ้ายและขวา
-            eggShellMoveLeft += eggShellVelocityLeft * elapsedTime / 1000.0;
-            eggShellMoveRight += eggShellVelocityRight * elapsedTime / 1000.0;
 
             // การเคลื่อนที่ของเมฆ
             cloudMove1 += cloudVelocity * elapsedTime / 1000.0;
@@ -95,22 +102,25 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         Color pinkegg3 = new Color(239, 79, 147);
         Color eye1 = new Color(181, 201, 229);
         Color eye2 = new Color(26, 54, 99);
-        Color mouse = new Color(147,50,30);
-        Color BodyandHead1 = new Color(195,45,45);
-        Color BodyandHead2 = new Color(231,66,52);
-        Color Leg1 = new Color(76,93,112);
-        Color Leg2 = new Color(107,127,145);
-        Color yellowwing = new Color(251,222,14);
-        Color bluewing1 = new Color(33,65,132);
-        Color bluewing2 = new Color(57,93,171);
-
+        Color mouse = new Color(147, 50, 30);
+        Color BodyandHead1 = new Color(195, 45, 45);
+        Color BodyandHead2 = new Color(231, 66, 52);
+        Color Leg1 = new Color(76, 93, 112);
+        Color Leg2 = new Color(107, 127, 145);
+        Color yellowwing = new Color(251, 222, 14);
+        Color bluewing1 = new Color(33, 65, 132);
+        Color bluewing2 = new Color(57, 93, 171);
+        Color sky = new Color(150, 227, 255);
 
         // originalTransform
         AffineTransform originalTransform = g2.getTransform();
         g2.setColor(Color.black);
 
         // เคลื่อนที่เปลือกไข่
-        g2.setTransform(new AffineTransform(1, 0, 0, 1, 0, eggMove));
+        if (totalTime >= 1000) {
+
+            g2.setTransform(new AffineTransform(1, 0, 0, 1, 0, eggMove));
+        }
 
         // เส้นโค้ง เปลือกไข่
         g2.setColor(pinkegg1);
@@ -171,6 +181,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
         g2.setColor(pinkegg2);
         // egg color
+
         buffer = floodFill(buffer, 321, 450 + (int) eggMove, Color.WHITE, pinkegg1);
         buffer = floodFill(buffer, 220, 430 + (int) eggMove, Color.WHITE, pinkegg1);
         buffer = floodFill(buffer, 243, 400 + (int) eggMove, Color.WHITE, pinkegg2);
@@ -193,12 +204,16 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         buffer = floodFill(buffer, 272, 377 + (int) eggMove, Color.WHITE, pinkegg2);
         buffer = floodFill(buffer, 300, 400 + (int) eggMove, Color.WHITE, pinkegg3);
 
-        g2.setTransform(originalTransform);
+        // g2.setTransform(originalTransform);
         // ลงสีเปลือกไข่
         buffer = floodFill(buffer, 266, 432 + (int) eggMove, Color.WHITE, new Color(253, 75, 149));
 
+        g2.setTransform(originalTransform);
+        // ลงสีท้องฟ้า
+        buffer = floodFill(buffer, 349, 62, Color.white, sky);
+
         // แยกเปลือกไข่ออก 2 ส่วน
-        if (totalTime >= 1300) {
+        if (totalTime >= 2300) {
             g2.setColor(Color.WHITE);
             g2.fillRect(0, 0, 600, 600);
 
@@ -395,69 +410,9 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
             g2.setTransform(originalTransform);
 
-            if (totalTime >= 2200) {
+            if (totalTime >= 2600) {
 
-                AffineTransform moveLegS1 = new AffineTransform(
-                        Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
-                        -Math.sin(Math.toRadians(30)), Math.cos(Math.toRadians(30)),
-                        311, 347);
-
-                AffineTransform moveLegS2 = new AffineTransform(1, 0, 0, 1, -311, -347);
-
-                moveLegS1.concatenate(moveLegS2);
-                g2.setTransform(moveLegS1);
-
-            }
-            g2.setColor(eye1);
-            setPlotSize(2);
-            // หัวนกด้านนอก
-            bezierCurve(g2, 306, 179, 291, 179, 285, 197);
-            bezierCurve(g2, 360, 205, 365, 182, 345, 174);
-            bezierCurve(g2, 345, 174, 327, 172, 323, 187);
-            bezierCurve(g2, 323, 187, 313, 177, 306, 179);
-
-            g2.setColor(BodyandHead1);
-
-            bezierCurve(g2, 285, 197, 247, 234, 285, 270);
-            bezierCurve(g2, 302, 273, 310, 291, 321, 271);
-            bezierCurve(g2, 321, 271, 333, 289, 345, 268);
-            bezierCurve(g2, 345, 268, 369, 279, 358, 258);
-            bezierCurve(g2, 358, 258, 385, 237, 360, 205);        
-            bezierCurve(g2, 283, 268, 293, 276, 303, 272);
-
-            // รายละเอียดหัวด้านใน
-            g2.setColor(eye1);
-            bezierCurve(g2, 321,185,340, 209 , 313 , 221);
-            bezierCurve(g2, 313,221,292, 227 , 286 , 209);
-            bezierCurve(g2, 286,209,284, 204 , 284 , 198);
-
-            g2.setColor(eye2);
-
-            bezierCurve(g2, 312,202,312, 207 ,307 , 211 , 302 , 211);
-            bezierCurve(g2, 302,211,297, 211 ,293 , 207 , 293 , 202);
-            bezierCurve(g2, 293,202,293, 197 ,297 , 193 , 302 , 193);
-            bezierCurve(g2, 302,193,307, 193 ,312 , 197 , 312 , 202);
-
-            bezierCurve(g2, 326,192,329, 186 , 337 , 188);
-            bezierCurve(g2, 337,188,344, 189 , 343 , 198);
-            // bezierCurve(g2, 343,198,334, 194 , 328 , 198);
-            g2.setColor(mouse);
-
-            bezierCurve(g2, 329,200,363, 195 , 362 , 227);
-            bezierCurve(g2, 362,227,364, 247 , 343 , 253);
-            bezierCurve(g2, 343,253,343, 226 , 318 , 229);
-            bezierCurve(g2, 318,229,314, 221 , 316 , 220);
-            bezierCurve(g2, 318,229,321, 245 , 338 , 241);
-
-            g2.setColor(Color.BLACK);
-
-
-            if (totalTime >= 3000) {
-                // g2.setTransform(originalTransform);
-
-                if ((totalTime / 1000.0) % 2 >= 0 && (totalTime / 1000.0) % 2 <= 0.5
-                        || (totalTime / 1000.0) % 2 >= 1 && (totalTime / 1000.0) % 2 <= 1.5) {
-                    // g2.setTransform(originalTransform);
+                if (totalTime >= 3200) {
 
                     AffineTransform moveLegS1 = new AffineTransform(
                             Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
@@ -468,268 +423,331 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                     moveLegS1.concatenate(moveLegS2);
                     g2.setTransform(moveLegS1);
-                } else {
+                }
+
+                g2.setColor(eye1);
+                setPlotSize(2);
+                // หัวนกด้านนอก
+                bezierCurve(g2, 306, 179, 291, 179, 285, 197);
+                bezierCurve(g2, 360, 205, 365, 182, 345, 174);
+                bezierCurve(g2, 345, 174, 327, 172, 323, 187);
+                bezierCurve(g2, 323, 187, 313, 177, 306, 179);
+
+                g2.setColor(BodyandHead1);
+
+                bezierCurve(g2, 285, 197, 247, 234, 285, 270);
+                bezierCurve(g2, 302, 273, 310, 291, 321, 271);
+                bezierCurve(g2, 321, 271, 333, 289, 345, 268);
+                bezierCurve(g2, 345, 268, 369, 279, 358, 258);
+                bezierCurve(g2, 358, 258, 385, 237, 360, 205);
+                bezierCurve(g2, 283, 268, 293, 276, 303, 272);
+
+                // รายละเอียดหัวด้านใน
+                g2.setColor(eye1);
+                bezierCurve(g2, 321, 185, 340, 209, 313, 221);
+                bezierCurve(g2, 313, 221, 292, 227, 286, 209);
+                bezierCurve(g2, 286, 209, 284, 204, 284, 198);
+
+                g2.setColor(eye2);
+
+                bezierCurve(g2, 312, 202, 312, 207, 307, 211, 302, 211);
+                bezierCurve(g2, 302, 211, 297, 211, 293, 207, 293, 202);
+                bezierCurve(g2, 293, 202, 293, 197, 297, 193, 302, 193);
+                bezierCurve(g2, 302, 193, 307, 193, 312, 197, 312, 202);
+
+                bezierCurve(g2, 326, 192, 329, 186, 337, 188);
+                bezierCurve(g2, 337, 188, 344, 189, 343, 198);
+                // bezierCurve(g2, 343,198,334, 194 , 328 , 198);
+                g2.setColor(mouse);
+
+                bezierCurve(g2, 329, 200, 363, 195, 362, 227);
+                bezierCurve(g2, 362, 227, 364, 247, 343, 253);
+                bezierCurve(g2, 343, 253, 343, 226, 318, 229);
+                bezierCurve(g2, 318, 229, 314, 221, 316, 220);
+                bezierCurve(g2, 318, 229, 321, 245, 338, 241);
+
+                g2.setColor(Color.BLACK);
+
+                if (totalTime >= 3700) {
                     // g2.setTransform(originalTransform);
-                    AffineTransform moveWing1 = new AffineTransform(
-                            Math.cos(Math.toRadians(60)), Math.sin(Math.toRadians(60)),
-                            -Math.sin(Math.toRadians(60)), Math.cos(Math.toRadians(60)),
-                            310, 329);
 
-                    AffineTransform moveWing2 = new AffineTransform(1, 0, 0, 1, -310, -329);
+                    if ((totalTime / 1000.0) % 2 >= 0 && (totalTime / 1000.0) % 2 <= 0.5
+                            || (totalTime / 1000.0) % 2 >= 1 && (totalTime / 1000.0) % 2 <= 1.5) {
+                        // g2.setTransform(originalTransform);
 
-                    moveWing1.concatenate(moveWing2);
-                    g2.setTransform(moveWing1);
+                        AffineTransform moveLegS3 = new AffineTransform(
+                                Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
+                                -Math.sin(Math.toRadians(30)), Math.cos(Math.toRadians(30)),
+                                311, 347);
+
+                        AffineTransform moveLegS4 = new AffineTransform(1, 0, 0, 1, -311, -347);
+
+                        moveLegS3.concatenate(moveLegS4);
+                        g2.setTransform(moveLegS3);
+                    } else {
+                        // g2.setTransform(originalTransform);
+                        AffineTransform moveWing1 = new AffineTransform(
+                                Math.cos(Math.toRadians(60)), Math.sin(Math.toRadians(60)),
+                                -Math.sin(Math.toRadians(60)), Math.cos(Math.toRadians(60)),
+                                310, 329);
+
+                        AffineTransform moveWing2 = new AffineTransform(1, 0, 0, 1, -310, -329);
+
+                        moveWing1.concatenate(moveWing2);
+                        g2.setTransform(moveWing1);
+                    }
+
+                }
+                // ปีกขวาของนก
+                g2.setColor(bluewing1);
+                bezierCurve(g2, 257, 318, 252, 321, 250, 326);
+                bezierCurve(g2, 250, 330, 209, 352, 198, 354);
+                bezierCurve(g2, 198, 354, 193, 363, 205, 362);
+                bezierCurve(g2, 205, 362, 197, 376, 220, 369);
+                bezierCurve(g2, 220, 369, 222, 378, 237, 370);
+                bezierCurve(g2, 237, 370, 261, 359, 268, 352);
+                bezierCurve(g2, 268, 352, 310, 335, 308, 313);
+
+                g2.setColor(BodyandHead1);
+                bezierCurve(g2, 283, 275, 297, 272, 303, 279);
+                bezierCurve(g2, 282, 274, 266, 289, 257, 318);
+                bezierCurve(g2, 250, 326, 249, 328, 250, 330);
+
+                bezierCurve(g2, 308, 313, 313, 297, 303, 280);
+                bresenhamLine(g2, 303, 280, 304, 276);
+
+                bresenhamLine(g2, 303, 280, 304, 276);
+                // รายละเอียดปีกขวา
+                bezierCurve(g2, 307, 294, 288, 322, 289, 300);
+                bezierCurve(g2, 289, 300, 269, 322, 274, 301);
+                bezierCurve(g2, 274, 301, 263, 310, 262, 309);
+
+                g2.setColor(yellowwing);
+                bezierCurve(g2, 307, 310, 287, 333, 287, 316);
+                bezierCurve(g2, 287, 316, 268, 335, 271, 318);
+                bezierCurve(g2, 271, 318, 258, 329, 256, 320);
+                bresenhamLine(g2, 256, 320, 256, 318);
+
+                g2.setColor(bluewing1);
+                bezierCurve(g2, 272, 348, 241, 355, 272, 333);
+                bezierCurve(g2, 272, 333, 233, 357, 258, 328);
+                bezierCurve(g2, 258, 328, 249, 332, 250, 328);
+
+                if (totalTime >= 3700) {
+                    g2.setTransform(originalTransform);
+
+                    AffineTransform moveLegS3 = new AffineTransform(
+                            Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
+                            -Math.sin(Math.toRadians(30)), Math.cos(Math.toRadians(30)),
+                            311, 347);
+
+                    AffineTransform moveLegS4 = new AffineTransform(1, 0, 0, 1, -311, -347);
+
+                    moveLegS3.concatenate(moveLegS4);
+                    g2.setTransform(moveLegS3);
+                }
+
+                // ลำตัวนก
+                g2.setColor(BodyandHead1);
+                bezierCurve(g2, 273, 349, 322, 353, 341, 338);
+                bezierCurve(g2, 341, 338, 361, 321, 360, 312);
+                bezierCurve(g2, 360, 312, 367, 283, 358, 270);
+
+                bezierCurve(g2, 362, 296, 367, 296, 367, 294);
+                bezierCurve(g2, 367, 280, 363, 281, 362, 280);
+
+                // ลำตัวส่วนชิดปีกขวานก
+                // bresenhamLine(g2, 302, 273, 300, 280);
+                // bezierCurve(g2, 300, 280, 312, 287, 308, 310);
+                // bezierCurve(g2, 308, 310, 308, 336, 273, 349);
+
+                // bezierCurve(g2, 276,348,257, 329 , 284 , 267);
+                // bezierCurve(g2, 277,350,270, 338 , 272 , 328);
+
+                bezierCurve(g2, 277, 350, 271, 341, 272, 339);
+                g2.setColor(bluewing2);
+                bezierCurve(g2, 272, 339, 270, 332, 272, 328);
+
+                g2.setColor(BodyandHead1);
+
+                // ลำตัวไม่มีรายละเอียดด้านใน
+                // ปีกซ้ายของนก
+                bezierCurve(g2, 360, 262, 367, 265, 369, 284);
+                bezierCurve(g2, 369, 284, 369, 303, 360, 312);
+
+                // ต้นขาซ้ายของนก
+                bezierCurve(g2, 341, 338, 346, 353, 335, 359);
+                bezierCurve(g2, 335, 359, 322, 360, 321, 357);
+                bezierCurve(g2, 321, 357, 313, 355, 313, 348);
+
+                g2.setColor(Color.BLACK);
+                // ต้นขาซ้ายนกไม่มีรายละเอียด
+                // เท้าซ้ายของนก
+                g2.setColor(Leg1);
+                bresenhamLine(g2, 333, 359, 333, 364);
+                bezierCurve(g2, 333, 364, 354, 366, 355, 374);
+                bezierCurve(g2, 355, 374, 356, 386, 344, 383);
+                bezierCurve(g2, 344, 383, 332, 383, 324, 373);
+                bezierCurve(g2, 324, 373, 309, 371, 312, 364);
+                bezierCurve(g2, 312, 364, 313, 359, 320, 362);
+                bresenhamLine(g2, 320, 362, 319, 356);
+
+                // รายละเอียดเท้าซ้ายนก
+
+                // ต้นขาขวาของนก
+                g2.setColor(BodyandHead1);
+                bezierCurve(g2, 308, 348, 309, 362, 300, 366);
+                bresenhamLine(g2, 300, 366, 287, 365);
+                bezierCurve(g2, 287, 365, 278, 357, 277, 350);
+
+                g2.setColor(Leg1);
+                // ต้นขวาไม่มีรายละเอียด
+                bezierCurve(g2, 336, 372, 342, 373, 342, 381);
+                bezierCurve(g2, 341, 370, 349, 372, 351, 379);
+
+                // เท้าขวาของนก
+                g2.setColor(Leg1);
+                bresenhamLine(g2, 298, 366, 298, 372);
+                bezierCurve(g2, 298, 372, 320, 372, 321, 379);
+                bezierCurve(g2, 321, 379, 322, 393, 311, 390);
+                bezierCurve(g2, 311, 390, 300, 390, 297, 387);
+                bezierCurve(g2, 297, 387, 292, 382, 291, 381);
+                bezierCurve(g2, 291, 381, 280, 380, 279, 375);
+                bezierCurve(g2, 279, 375, 278, 368, 287, 371);
+                bresenhamLine(g2, 287, 371, 287, 365);
+
+                // รายละเอียดเท้าขวานก
+                bezierCurve(g2, 302, 379, 312, 384, 309, 390);
+                bezierCurve(g2, 308, 378, 315, 378, 319, 385);
+
+                // ลงสีจุดที่ไม่ตามตัวนก
+                buffer = floodFill(buffer, 340, 316, Color.WHITE, BodyandHead2);
+                buffer = floodFill(buffer, 337, 260, Color.WHITE, BodyandHead2);
+                buffer = floodFill(buffer, 318, 290, Color.WHITE, BodyandHead2);
+                buffer = floodFill(buffer, 281, 329, Color.WHITE, bluewing2);
+
+                // ดวงอาทิตย์
+                Color sunYellow = new Color(255, 254, 110);
+                Color sunShadow = new Color(245, 227, 21);
+                Color sunBorderCircle = new Color(205, 105, 26);
+                Color sunAroundCircle = new Color(247, 135, 35);
+                Color sunBoderAroundCircle = new Color(175, 88, 23);
+
+                g2.setColor(sunBorderCircle);
+                g2.setTransform(originalTransform);
+                midpointCircle(g2, 518, 65, 25);
+                buffer = floodFill(buffer, 519, 65, Color.white, sunYellow);
+
+                g2.setColor(sunShadow);
+                bezierCurve(g2, 495, 68, 506, 81, 520, 81);
+                bezierCurve(g2, 520, 81, 538, 80, 542, 68);
+                buffer = floodFill(buffer, 519, 85, sunYellow, sunShadow);
+
+                g2.setColor(sunAroundCircle);
+                // createTrianglePolygon(g2, 489, 57, 471, 65, 489, 73);
+                // createTrianglePolygon(g2, 489, 73, 477, 87, 495, 85);
+                // createTrianglePolygon(g2, 495, 85, 493, 104, 508, 94);
+                // createTrianglePolygon(g2, 508, 94, 516, 110, 524, 95);
+                // createTrianglePolygon(g2, 524, 95, 538, 105, 538, 89);
+                // createTrianglePolygon(g2, 538, 89, 557, 90, 547, 76);
+                // createTrianglePolygon(g2, 547, 76, 563, 68, 548, 60);
+                // createTrianglePolygon(g2, 548, 60, 558, 45, 541, 48);
+                // createTrianglePolygon(g2, 541, 48, 542, 28, 529, 38);
+                // createTrianglePolygon(g2, 529, 38, 519, 21, 512, 38);
+                // createTrianglePolygon(g2, 512, 38, 496, 26, 497, 44);
+                // createTrianglePolygon(g2, 497, 44, 479, 42, 489, 57);
+                g2.setColor(sunBoderAroundCircle);
+                bresenhamLine(g2, 490, 59, 481, 44);
+                bresenhamLine(g2, 481, 44, 498, 44);
+                bresenhamLine(g2, 498, 44, 498, 26);
+                bresenhamLine(g2, 498, 26, 513, 38);
+                bresenhamLine(g2, 513, 38, 521, 22);
+                bresenhamLine(g2, 521, 22, 531, 40);
+                bresenhamLine(g2, 531, 38, 543, 31);
+                bresenhamLine(g2, 543, 31, 543, 50);
+                bresenhamLine(g2, 543, 50, 559, 48);
+                bresenhamLine(g2, 559, 48, 550, 63);
+                bresenhamLine(g2, 550, 63, 564, 70);
+                bresenhamLine(g2, 564, 70, 549, 78);
+                bresenhamLine(g2, 549, 78, 559, 93);
+                bresenhamLine(g2, 559, 93, 541, 91);
+                bresenhamLine(g2, 541, 91, 540, 107);
+                bresenhamLine(g2, 540, 107, 526, 97);
+                bresenhamLine(g2, 526, 97, 518, 112);
+                bresenhamLine(g2, 518, 112, 510, 96);
+                bresenhamLine(g2, 510, 96, 495, 105);
+                bresenhamLine(g2, 495, 105, 496, 88);
+                bresenhamLine(g2, 496, 88, 478, 89);
+                bresenhamLine(g2, 478, 89, 490, 76);
+                bresenhamLine(g2, 490, 76, 473, 68);
+                bresenhamLine(g2, 473, 68, 490, 59);
+                buffer = floodFill(buffer, 491, 50, Color.white, sunAroundCircle);
+
+                if (totalTime >= 2700) {
+
+                    g2.setTransform(originalTransform);
+
+                    AffineTransform moveCloud = new AffineTransform(1, 0, 0, 1, cloudMove1, 0);
+
+                    g2.setTransform(moveCloud);
+                    // เมฆด้านบน
+                    // สีเมฆและท้องฟ้า
+                    Color cloudBorder = new Color(193, 227, 244);
+                    Color cloudBlue = new Color(218, 242, 254);
+
+                    g2.setColor(cloudBorder);
+                    bezierCurve(g2, 498, 130, 480, 128, 479, 144);
+                    bezierCurve(g2, 479, 144, 463, 146, 473, 157);
+                    bezierCurve(g2, 473, 157, 476, 163, 488, 159);
+                    bezierCurve(g2, 488, 159, 504, 167, 515, 159);
+                    bezierCurve(g2, 515, 159, 532, 168, 543, 156);
+                    bezierCurve(g2, 543, 156, 559, 160, 558, 146);
+                    bezierCurve(g2, 558, 146, 560, 141, 547, 139);
+                    bezierCurve(g2, 547, 139, 546, 131, 533, 130);
+                    bezierCurve(g2, 533, 130, 529, 120, 514, 120);
+                    bezierCurve(g2, 514, 120, 502, 121, 498, 130);
+
+                    g2.setColor(cloudBlue);
+                    bezierCurve(g2, 480, 143, 494, 152, 504, 146);
+                    bezierCurve(g2, 504, 146, 515, 155, 527, 147);
+                    bezierCurve(g2, 527, 147, 535, 153, 542, 147);
+                    bezierCurve(g2, 542, 147, 551, 149, 556, 143);
+                    // ลงสีเมฆด้านบน
+                    buffer = floodFill(buffer, 553 + (int) cloudMove1, 154, Color.white, cloudBlue);
+                    g2.setTransform(originalTransform);
+
+                    AffineTransform moveCloud2 = new AffineTransform(1, 0, 0, 1, cloudMove1 * 1.35, 0);
+                    g2.setTransform(moveCloud2);
+
+                    // เมฆด้านล่าง
+                    g2.setColor(cloudBorder);
+                    bezierCurve(g2, 498, 459, 480, 457, 479, 473);
+                    bezierCurve(g2, 479, 473, 463, 475, 473, 486);
+                    bezierCurve(g2, 473, 486, 476, 492, 488, 488);
+                    bezierCurve(g2, 488, 488, 504, 496, 515, 488);
+                    bezierCurve(g2, 515, 488, 532, 497, 543, 485);
+                    bezierCurve(g2, 543, 485, 559, 489, 558, 475);
+                    bezierCurve(g2, 558, 475, 560, 470, 547, 468);
+                    bezierCurve(g2, 547, 468, 546, 460, 533, 459);
+                    bezierCurve(g2, 533, 459, 529, 449, 514, 449);
+                    bezierCurve(g2, 514, 449, 502, 450, 498, 459);
+
+                    g2.setColor(cloudBlue);
+                    bezierCurve(g2, 480, 472, 494, 481, 504, 475);
+                    bezierCurve(g2, 504, 475, 515, 484, 527, 476);
+                    bezierCurve(g2, 527, 476, 535, 482, 542, 476);
+                    bezierCurve(g2, 542, 476, 551, 478, 556, 472);
+                    // ลงสีเมฆด้านล่าง
+                    buffer = floodFill(buffer, 553 + (int) ((int) cloudMove1 * 1.35), 478, Color.white, cloudBlue);
+
+                    // ลงสีท้องฟ้า
+                    // buffer = floodFill(buffer, 349, 62, Color.white, sky);
                 }
 
             }
-            // ปีกขวาของนก  
-            g2.setColor(bluewing1);        
-            bezierCurve(g2, 257, 318, 252, 321, 250, 326);
-            bezierCurve(g2, 250, 330, 209, 352, 198, 354);
-            bezierCurve(g2, 198, 354, 193, 363, 205, 362);
-            bezierCurve(g2, 205, 362, 197, 376, 220, 369);
-            bezierCurve(g2, 220, 369, 222, 378, 237, 370);
-            bezierCurve(g2, 237, 370, 261, 359, 268, 352);
-            bezierCurve(g2, 268, 352, 310, 335, 308, 313);            
 
-            g2.setColor(BodyandHead1);
-            bezierCurve(g2, 283, 275, 297, 272, 303, 279);  
-            bezierCurve(g2, 282, 274, 266, 289, 257, 318); 
-            bezierCurve(g2, 250, 326, 249, 328, 250, 330);            
-            
-            bezierCurve(g2, 308, 313, 313, 297, 303, 280);
-            bresenhamLine(g2, 303, 280, 304, 276);
-
-            bresenhamLine(g2, 303, 280, 304, 276);
-            // รายละเอียดปีกขวา
-            bezierCurve(g2, 307,294,288, 322 , 289 , 300);
-            bezierCurve(g2, 289,300,269, 322 , 274 , 301);
-            bezierCurve(g2, 274,301,263, 310 , 262 , 309);
-
-            g2.setColor(yellowwing);
-            bezierCurve(g2, 307,310,287, 333 , 287 , 316);
-            bezierCurve(g2, 287,316,268, 335 , 271 , 318);
-            bezierCurve(g2, 271,318,258, 329 , 256 , 320);
-            bresenhamLine(g2, 256,320,256,318);
-
-            g2.setColor(bluewing1);            
-            bezierCurve(g2, 272,348,241, 355 , 272 , 333);
-            bezierCurve(g2, 272,333,233, 357 , 258 , 328);
-            bezierCurve(g2, 258,328,249, 332 , 250 , 328);
-            
-            
-
-            if (totalTime >= 3000) {
-                g2.setTransform(originalTransform);
-
-                AffineTransform moveLegS1 = new AffineTransform(
-                        Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
-                        -Math.sin(Math.toRadians(30)), Math.cos(Math.toRadians(30)),
-                        311, 347);
-
-                AffineTransform moveLegS2 = new AffineTransform(1, 0, 0, 1, -311, -347);
-
-                moveLegS1.concatenate(moveLegS2);
-                g2.setTransform(moveLegS1);
-            }
-
-            // ลำตัวนก
-            g2.setColor(BodyandHead1);
-            bezierCurve(g2, 273, 349, 322, 353, 341, 338);
-            bezierCurve(g2, 341, 338, 361, 321, 360, 312);
-            bezierCurve(g2, 360, 312, 367, 283, 358, 270); 
-
-            bezierCurve(g2, 362,296,367, 296 , 367 , 294);  
-            bezierCurve(g2, 367,280,363, 281 , 362 , 280);      
-
-            // ลำตัวส่วนชิดปีกขวานก
-            //bresenhamLine(g2, 302, 273, 300, 280);
-            //bezierCurve(g2, 300, 280, 312, 287, 308, 310);
-            //bezierCurve(g2, 308, 310, 308, 336, 273, 349);
-
-            //bezierCurve(g2, 276,348,257, 329 , 284 , 267);            
-            //bezierCurve(g2, 277,350,270, 338 , 272 , 328);
-
-            bezierCurve(g2, 277,350,271, 341 , 272 , 339);
-            g2.setColor(bluewing2);
-            bezierCurve(g2, 272,339,270, 332 , 272 , 328);
-
-            g2.setColor(BodyandHead1);
-
-            // ลำตัวไม่มีรายละเอียดด้านใน
-            // ปีกซ้ายของนก
-            bezierCurve(g2, 360, 262, 367, 265, 369, 284);
-            bezierCurve(g2, 369, 284, 369, 303, 360, 312);            
-
-            // ต้นขาซ้ายของนก
-            bezierCurve(g2, 341, 338, 346, 353, 335, 359);
-            bezierCurve(g2, 335, 359, 322, 360, 321, 357);
-            bezierCurve(g2, 321, 357, 313, 355, 313, 348);
-
-            g2.setColor(Color.BLACK);
-            // ต้นขาซ้ายนกไม่มีรายละเอียด            
-            // เท้าซ้ายของนก
-            g2.setColor(Leg1);
-            bresenhamLine(g2, 333, 359, 333, 364);
-            bezierCurve(g2, 333, 364, 354, 366, 355, 374);
-            bezierCurve(g2, 355, 374, 356, 386, 344, 383);
-            bezierCurve(g2, 344, 383, 332, 383, 324, 373);
-            bezierCurve(g2, 324, 373, 309, 371, 312, 364);
-            bezierCurve(g2, 312, 364, 313, 359, 320, 362);
-            bresenhamLine(g2, 320, 362, 319, 356);            
-
-            // รายละเอียดเท้าซ้ายนก
-
-            // ต้นขาขวาของนก
-            g2.setColor(BodyandHead1);
-            bezierCurve(g2, 308, 348, 309, 362, 300, 366);
-            bresenhamLine(g2, 300, 366, 287, 365);
-            bezierCurve(g2, 287, 365, 278, 357, 277, 350);
-
-            g2.setColor(Leg1);
-            // ต้นขวาไม่มีรายละเอียด
-            bezierCurve(g2, 336,372,342, 373 , 342 , 381);
-            bezierCurve(g2, 341,370,349, 372 , 351 , 379);
-
-            // เท้าขวาของนก
-            g2.setColor(Leg1);
-            bresenhamLine(g2, 298, 366, 298, 372);
-            bezierCurve(g2, 298, 372, 320, 372, 321, 379);
-            bezierCurve(g2, 321, 379, 322, 393, 311, 390);
-            bezierCurve(g2, 311, 390, 300, 390, 297, 387);
-            bezierCurve(g2, 297, 387, 292, 382, 291, 381);
-            bezierCurve(g2, 291, 381, 280, 380, 279, 375);
-            bezierCurve(g2, 279, 375, 278, 368, 287, 371);
-            bresenhamLine(g2, 287, 371, 287, 365);           
-
-            // รายละเอียดเท้าขวานก
-            bezierCurve(g2, 302,379,312, 384 , 309 , 390);
-            bezierCurve(g2, 308,378,315, 378 , 319 , 385);
-
-            //ลงสีจุดที่ไม่ตามตัวนก
-            buffer = floodFill(buffer, 340 , 316, Color.WHITE, BodyandHead2);
-            buffer = floodFill(buffer, 337 , 260, Color.WHITE, BodyandHead2);            
-            buffer = floodFill(buffer, 318 , 290, Color.WHITE, BodyandHead2);
-            buffer = floodFill(buffer, 281 , 329, Color.WHITE, bluewing2);
-
-            // ดวงอาทิตย์
-            Color sunYellow = new Color(255, 254, 110);
-            Color sunShadow = new Color(245, 227, 21);
-            Color sunBorderCircle = new Color(205, 105, 26);
-            Color sunAroundCircle = new Color(247, 135, 35);
-            Color sunBoderAroundCircle = new Color(175, 88, 23);
-
-            g2.setColor(sunBorderCircle);
-            g2.setTransform(originalTransform);
-            midpointCircle(g2, 518, 65, 25);
-            buffer = floodFill(buffer, 519, 65, Color.white, sunYellow);
-
-            g2.setColor(sunShadow);
-            bezierCurve(g2, 495, 68, 506, 81, 520, 81);
-            bezierCurve(g2, 520, 81, 538, 80, 542, 68);
-            buffer = floodFill(buffer, 519, 85, sunYellow, sunShadow);
-
-            g2.setColor(sunAroundCircle);
-            // createTrianglePolygon(g2, 489, 57, 471, 65, 489, 73);
-            // createTrianglePolygon(g2, 489, 73, 477, 87, 495, 85);
-            // createTrianglePolygon(g2, 495, 85, 493, 104, 508, 94);
-            // createTrianglePolygon(g2, 508, 94, 516, 110, 524, 95);
-            // createTrianglePolygon(g2, 524, 95, 538, 105, 538, 89);
-            // createTrianglePolygon(g2, 538, 89, 557, 90, 547, 76);
-            // createTrianglePolygon(g2, 547, 76, 563, 68, 548, 60);
-            // createTrianglePolygon(g2, 548, 60, 558, 45, 541, 48);
-            // createTrianglePolygon(g2, 541, 48, 542, 28, 529, 38);
-            // createTrianglePolygon(g2, 529, 38, 519, 21, 512, 38);
-            // createTrianglePolygon(g2, 512, 38, 496, 26, 497, 44);
-            // createTrianglePolygon(g2, 497, 44, 479, 42, 489, 57);
-            g2.setColor(sunBoderAroundCircle);
-            bresenhamLine(g2, 490, 59, 481, 44);
-            bresenhamLine(g2, 481, 44, 498, 44);
-            bresenhamLine(g2, 498, 44, 498, 26);
-            bresenhamLine(g2, 498, 26, 513, 38);
-            bresenhamLine(g2, 513, 38, 521, 22);
-            bresenhamLine(g2, 521, 22, 531, 40);
-            bresenhamLine(g2, 531, 38, 543, 31);
-            bresenhamLine(g2, 543, 31, 543, 50);
-            bresenhamLine(g2, 543, 50, 559, 48);
-            bresenhamLine(g2, 559, 48, 550, 63);
-            bresenhamLine(g2, 550, 63, 564, 70);
-            bresenhamLine(g2, 564, 70, 549, 78);
-            bresenhamLine(g2, 549, 78, 559, 93);
-            bresenhamLine(g2, 559, 93, 541, 91);
-            bresenhamLine(g2, 541, 91, 540, 107);
-            bresenhamLine(g2, 540, 107, 526, 97);
-            bresenhamLine(g2, 526, 97, 518, 112);
-            bresenhamLine(g2, 518, 112, 510, 96);
-            bresenhamLine(g2, 510, 96, 495, 105);
-            bresenhamLine(g2, 495, 105, 496, 88);
-            bresenhamLine(g2, 496, 88, 478, 89);
-            bresenhamLine(g2, 478, 89, 490, 76);
-            bresenhamLine(g2, 490, 76, 473, 68);
-            bresenhamLine(g2, 473, 68, 490, 59);
-            buffer = floodFill(buffer, 491, 50, Color.white, sunAroundCircle);
-
-            if (totalTime >= 3500) {
-
-                g2.setTransform(originalTransform);
-
-                AffineTransform moveCloud = new AffineTransform(1, 0, 0, 1, cloudMove1, 0);
-
-                g2.setTransform(moveCloud);
-                // เมฆด้านบน
-                // สีเมฆและท้องฟ้า
-                Color cloudBorder = new Color(193, 227, 244);
-                Color cloudBlue = new Color(218, 242, 254);
-                Color sky = new Color(150,227,255);
-                g2.setColor(cloudBorder);
-                bezierCurve(g2, 498, 130, 480, 128, 479, 144);
-                bezierCurve(g2, 479, 144, 463, 146, 473, 157);
-                bezierCurve(g2, 473, 157, 476, 163, 488, 159);
-                bezierCurve(g2, 488, 159, 504, 167, 515, 159);
-                bezierCurve(g2, 515, 159, 532, 168, 543, 156);
-                bezierCurve(g2, 543, 156, 559, 160, 558, 146);
-                bezierCurve(g2, 558, 146, 560, 141, 547, 139);
-                bezierCurve(g2, 547, 139, 546, 131, 533, 130);
-                bezierCurve(g2, 533, 130, 529, 120, 514, 120);
-                bezierCurve(g2, 514, 120, 502, 121, 498, 130);
-
-                g2.setColor(cloudBlue);
-                bezierCurve(g2, 480, 143, 494, 152, 504, 146);
-                bezierCurve(g2, 504, 146, 515, 155, 527, 147);
-                bezierCurve(g2, 527, 147, 535, 153, 542, 147);
-                bezierCurve(g2, 542, 147, 551, 149, 556, 143);
-                // ลงสีเมฆด้านบน
-                buffer = floodFill(buffer, 553+(int)cloudMove1, 154, Color.white, cloudBlue);
-                g2.setTransform(originalTransform);
-
-                AffineTransform moveCloud2 = new AffineTransform(1, 0, 0, 1, cloudMove1 * 1.35, 0);
-                g2.setTransform(moveCloud2);
-
-                // เมฆด้านล่าง
-                g2.setColor(cloudBorder);
-                bezierCurve(g2, 498, 459, 480, 457, 479, 473);
-                bezierCurve(g2, 479, 473, 463, 475, 473, 486);
-                bezierCurve(g2, 473, 486, 476, 492, 488, 488);
-                bezierCurve(g2, 488, 488, 504, 496, 515, 488);
-                bezierCurve(g2, 515, 488, 532, 497, 543, 485);
-                bezierCurve(g2, 543, 485, 559, 489, 558, 475);
-                bezierCurve(g2, 558, 475, 560, 470, 547, 468);
-                bezierCurve(g2, 547, 468, 546, 460, 533, 459);
-                bezierCurve(g2, 533, 459, 529, 449, 514, 449);
-                bezierCurve(g2, 514, 449, 502, 450, 498, 459);
-
-                g2.setColor(cloudBlue);
-                bezierCurve(g2, 480, 472, 494, 481, 504, 475);
-                bezierCurve(g2, 504, 475, 515, 484, 527, 476);
-                bezierCurve(g2, 527, 476, 535, 482, 542, 476);
-                bezierCurve(g2, 542, 476, 551, 478, 556, 472);
-                // ลงสีเมฆด้านล่าง
-                buffer = floodFill(buffer, 553+(int)((int)cloudMove1*1.35), 478, Color.white, cloudBlue);
-
-                // ลงสีท้องฟ้า
-                // buffer = floodFill(buffer, 349, 62, Color.white, sky);
-            }   
-
+            // ลงสีท้องฟ้า
+            buffer = floodFill(buffer, 349, 62, Color.white, sky);
             g2.setTransform(originalTransform);
 
         }
