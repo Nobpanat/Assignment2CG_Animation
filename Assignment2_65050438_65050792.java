@@ -141,16 +141,23 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         bezierCurve(g2, 306, 556, 292, 540, 309, 526);
         bresenhamLine(g2, 309, 526, 313, 526);
 
-        g2.setColor(pinkegg2);
-        bezierCurve(g2, 244, 395, 252, 397, 248, 406);
-        bezierCurve(g2, 248, 406, 243, 410, 239, 406);
-        bezierCurve(g2, 239, 406, 235, 399, 242, 395);
-        bresenhamLine(g2, 242, 395, 244, 395);
-
         bezierCurve(g2, 313, 526, 334, 525, 334, 546);
         bezierCurve(g2, 334, 546, 329, 568, 306, 556);
         bezierCurve(g2, 306, 556, 292, 540, 309, 526);
         bresenhamLine(g2, 309, 526, 313, 526);
+
+        g2.setColor(pinkegg2);
+        bezierCurve(g2, 244, 395, 252, 397, 248, 406);
+        bezierCurve(g2, 248, 406, 243, 410, 239, 406);
+        bezierCurve(g2, 239, 406, 235, 399, 242, 395);
+        bresenhamLine(g2, 242, 395, 244, 395);      
+
+        bezierCurve(g2, 262, 370, 296, 355, 294, 376);
+        bezierCurve(g2, 294, 376, 294, 388, 274, 396);
+        bezierCurve(g2, 274, 396, 256, 403, 251, 392);
+        bezierCurve(g2, 251, 392, 248, 381, 260, 372);
+        bezierCurve(g2, 260, 372, 272, 363, 262, 370);
+
 
         g2.setColor(pinkegg2);
         // egg color
@@ -163,12 +170,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         buffer = floodFill(buffer, 272, 377 + (int) eggMove, Color.WHITE, pinkegg2);
         buffer = floodFill(buffer, 300, 400 + (int) eggMove, Color.WHITE, pinkegg3);
 
-        bezierCurve(g2, 262, 370, 296, 355, 294, 376);
-        bezierCurve(g2, 294, 376, 294, 388, 274, 396);
-        bezierCurve(g2, 274, 396, 256, 403, 251, 392);
-        bezierCurve(g2, 251, 392, 248, 381, 260, 372);
-        bezierCurve(g2, 260, 372, 272, 363, 262, 370);
-
+       
         g2.setColor(Color.black);
         setPlotSize(1);
 
@@ -226,6 +228,14 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             g2.setColor(pinkegg1);
 
             // รายละเอียดไข่ซีกซ้าย
+            buffer = floodFill(buffer, 300 + (int) eggShellMoveLeft, 263, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 298 + (int) eggShellMoveLeft, 364, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 250 + (int) eggShellMoveLeft, 350, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 213 + (int) eggShellMoveLeft, 278, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 268 + (int) eggShellMoveLeft, 227, Color.WHITE, pinkegg2);
+            buffer = floodFill(buffer, 239 + (int) eggShellMoveLeft, 248, Color.WHITE, pinkegg2);
+
+            //buffer = floodFill(buffer, 267 + (int) eggShellMoveLeft, 342, Color.WHITE, pinkegg1);
             // int colorEggShellLeft1 = 314 + (int) eggShellMoveLeft;
             // int colorEggShellLeft2 = 288 + (int) eggShellMoveLeft;
             // int colorEggShellLeft3 = 314 + (int) eggShellMoveLeft;
@@ -307,54 +317,62 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             g2.setColor(pinkegg1);
 
             // รายละเอียดไข่ ซีกขวา
-            buffer = floodFill(buffer, 279 + (int) eggShellMoveRight, 227, Color.WHITE, pinkegg3);
-            // int colorEggShellRight1 = 276 + (int) eggShellMoveRight;
-            // int colorEggShellRight2 = 280 + (int) eggShellMoveRight;
-            // int colorEggShellRight3 = 300 + (int) eggShellMoveRight;
-            // int colorEggcircleRight1 = 321 + (int) eggShellMoveRight;
-            // int colorEggcircleRight2 = 333 + (int) eggShellMoveRight;
-            // int colorEggcircleRight3 = 323 + (int) eggShellMoveRight;
-            // int colorEggcircleRight4 = 290 + (int) eggShellMoveRight;
+            buffer = floodFill(buffer, 279 + (int) eggShellMoveRight, 227, Color.WHITE, pinkegg2);
+            buffer = floodFill(buffer, 333 + (int) eggShellMoveRight, 300, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 323 + (int) eggShellMoveRight, 382, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 326 + (int) eggShellMoveRight, 218, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 302 + (int) eggShellMoveRight, 203, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 303 + (int) eggShellMoveRight, 310, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 306 + (int) eggShellMoveRight, 395, Color.WHITE, pinkegg3);
+           // buffer = floodFill(buffer, 296 + (int) eggShellMoveRight, 310, Color.WHITE, pinkegg3);
 
-            // if (colorEggShellRight1 >= 599 | colorEggShellRight3 >= 599) {
-            // colorEggShellRight1 = 599;
-            // colorEggcircleRight1 = 599;
-            // colorEggcircleRight4 = 599;
+        //     int colorEggShellRight1 = 302 + (int) eggShellMoveRight;
+        //     int colorEggShellRight2 = 303 + (int) eggShellMoveRight;
+        //     int colorEggShellRight3 = 306 + (int) eggShellMoveRight;
+        //     // int colorEggcircleRight1 = 321 + (int) eggShellMoveRight;
+        //     // int colorEggcircleRight2 = 333 + (int) eggShellMoveRight;
+        //     // int colorEggcircleRight3 = 323 + (int) eggShellMoveRight;
+        //     // int colorEggcircleRight4 = 290 + (int) eggShellMoveRight;
 
-            // buffer = floodFill(buffer, colorEggShellRight1, 227, pinkegg3, Color.white);
-            // buffer = floodFill(buffer, colorEggcircleRight1, 221, pinkegg1, Color.white);
-            // buffer = floodFill(buffer, colorEggcircleRight4, 219, pinkegg2, Color.white);
+        //     if (colorEggShellRight1 >= 599 | colorEggShellRight3 >= 599) {
+        //     colorEggShellRight1 = 599;
+        //     //colorEggcircleRight1 = 599;
+        //     //colorEggcircleRight4 = 599;
 
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellRight1, 227, Color.WHITE, pinkegg3);
-            // buffer = floodFill(buffer, colorEggcircleRight1, 221, Color.WHITE, pinkegg1);
-            // buffer = floodFill(buffer, colorEggcircleRight4, 219, Color.WHITE, pinkegg2);
+        //     buffer = floodFill(buffer, colorEggShellRight1, 203, pinkegg3, Color.white);
+        //     // buffer = floodFill(buffer, colorEggcircleRight1, 221, pinkegg1, Color.white);
+        //     //buffer = floodFill(buffer, colorEggcircleRight4, 219, pinkegg2, Color.white);
 
-            // }
-            // if (colorEggShellRight2 >= 599) {
-            // colorEggShellRight2 = 599;
-            // colorEggcircleRight2 = 599;
+        //     } else {
+        //     buffer = floodFill(buffer, colorEggShellRight1, 210, Color.WHITE, pinkegg3);
+        //     //buffer = floodFill(buffer, colorEggcircleRight1, 221, Color.WHITE, pinkegg1);
+        //     //buffer = floodFill(buffer, colorEggcircleRight4, 219, Color.WHITE, pinkegg2);
 
-            // buffer = floodFill(buffer, colorEggShellRight2, 323, pinkegg3, Color.white);
-            // buffer = floodFill(buffer, colorEggcircleRight2, 300, pinkegg1, Color.white);
+        //     }
+        //     if (colorEggShellRight2 >= 599) {
+        //     colorEggShellRight2 = 599;
+        //     //colorEggcircleRight2 = 599;
 
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellRight2, 323, Color.WHITE, pinkegg3);
-            // buffer = floodFill(buffer, colorEggcircleRight2, 300, Color.WHITE, pinkegg1);
+        //     buffer = floodFill(buffer, colorEggShellRight2, 310, pinkegg3, Color.white);
+        //     //buffer = floodFill(buffer, colorEggcircleRight2, 300, pinkegg1, Color.white);
 
-            // }
-            // if (colorEggShellRight3 >= 599) {
-            // colorEggShellRight3 = 599;
-            // colorEggcircleRight3 = 599;
+        //     } else {
+        //     buffer = floodFill(buffer, colorEggShellRight2, 310, Color.WHITE, pinkegg3);
+        //     //buffer = floodFill(buffer, colorEggcircleRight2, 300, Color.WHITE, pinkegg1);
 
-            // buffer = floodFill(buffer, colorEggShellRight3, 411, pinkegg3, Color.white);
-            // buffer = floodFill(buffer, colorEggcircleRight3, 382, pinkegg1, Color.white);
+        //     }
+        //     if (colorEggShellRight3 >= 599) {
+        //     colorEggShellRight3 = 599;
+        //     //colorEggcircleRight3 = 599;
 
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellRight3, 411, Color.WHITE, pinkegg3);
-            // buffer = floodFill(buffer, colorEggcircleRight3, 382, Color.WHITE, pinkegg1);
+        //     buffer = floodFill(buffer, colorEggShellRight3, 395, pinkegg3, Color.white);
+        //     //buffer = floodFill(buffer, colorEggcircleRight3, 382, pinkegg1, Color.white);
 
-            // }
+        //     } else {
+        //     buffer = floodFill(buffer, colorEggShellRight3, 395, Color.WHITE, pinkegg3);
+        //    // buffer = floodFill(buffer, colorEggcircleRight3, 382, Color.WHITE, pinkegg1);
+
+        //     }
 
             g2.setTransform(originalTransform);
 
@@ -660,12 +678,14 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         // กันหลุด frame 600 600
         if (x >= 600) {
             x = 600;
-        } else if (x <= 0) {
+        }  
+        if (x <= 0) {
             x = 0;
         }
         if (y >= 600) {
             y = 600;
-        } else if (y <= 0) {
+        }  
+        if (y <= 0) {
             y = 0;
         }
 
