@@ -150,14 +150,13 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         bezierCurve(g2, 244, 395, 252, 397, 248, 406);
         bezierCurve(g2, 248, 406, 243, 410, 239, 406);
         bezierCurve(g2, 239, 406, 235, 399, 242, 395);
-        bresenhamLine(g2, 242, 395, 244, 395);      
+        bresenhamLine(g2, 242, 395, 244, 395);
 
         bezierCurve(g2, 262, 370, 296, 355, 294, 376);
         bezierCurve(g2, 294, 376, 294, 388, 274, 396);
         bezierCurve(g2, 274, 396, 256, 403, 251, 392);
         bezierCurve(g2, 251, 392, 248, 381, 260, 372);
         bezierCurve(g2, 260, 372, 272, 363, 262, 370);
-
 
         g2.setColor(pinkegg2);
         // egg color
@@ -170,7 +169,6 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         buffer = floodFill(buffer, 272, 377 + (int) eggMove, Color.WHITE, pinkegg2);
         buffer = floodFill(buffer, 300, 400 + (int) eggMove, Color.WHITE, pinkegg3);
 
-       
         g2.setColor(Color.black);
         setPlotSize(1);
 
@@ -235,7 +233,8 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             buffer = floodFill(buffer, 268 + (int) eggShellMoveLeft, 227, Color.WHITE, pinkegg2);
             buffer = floodFill(buffer, 239 + (int) eggShellMoveLeft, 248, Color.WHITE, pinkegg2);
 
-            //buffer = floodFill(buffer, 267 + (int) eggShellMoveLeft, 342, Color.WHITE, pinkegg1);
+            // buffer = floodFill(buffer, 267 + (int) eggShellMoveLeft, 342, Color.WHITE,
+            // pinkegg1);
             // int colorEggShellLeft1 = 314 + (int) eggShellMoveLeft;
             // int colorEggShellLeft2 = 288 + (int) eggShellMoveLeft;
             // int colorEggShellLeft3 = 314 + (int) eggShellMoveLeft;
@@ -324,55 +323,64 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             buffer = floodFill(buffer, 302 + (int) eggShellMoveRight, 203, Color.WHITE, pinkegg3);
             buffer = floodFill(buffer, 303 + (int) eggShellMoveRight, 310, Color.WHITE, pinkegg3);
             buffer = floodFill(buffer, 306 + (int) eggShellMoveRight, 395, Color.WHITE, pinkegg3);
-           // buffer = floodFill(buffer, 296 + (int) eggShellMoveRight, 310, Color.WHITE, pinkegg3);
+            // buffer = floodFill(buffer, 296 + (int) eggShellMoveRight, 310, Color.WHITE,
+            // pinkegg3);
 
-        //     int colorEggShellRight1 = 302 + (int) eggShellMoveRight;
-        //     int colorEggShellRight2 = 303 + (int) eggShellMoveRight;
-        //     int colorEggShellRight3 = 306 + (int) eggShellMoveRight;
-        //     // int colorEggcircleRight1 = 321 + (int) eggShellMoveRight;
-        //     // int colorEggcircleRight2 = 333 + (int) eggShellMoveRight;
-        //     // int colorEggcircleRight3 = 323 + (int) eggShellMoveRight;
-        //     // int colorEggcircleRight4 = 290 + (int) eggShellMoveRight;
+            // int colorEggShellRight1 = 302 + (int) eggShellMoveRight;
+            // int colorEggShellRight2 = 303 + (int) eggShellMoveRight;
+            // int colorEggShellRight3 = 306 + (int) eggShellMoveRight;
+            // // int colorEggcircleRight1 = 321 + (int) eggShellMoveRight;
+            // // int colorEggcircleRight2 = 333 + (int) eggShellMoveRight;
+            // // int colorEggcircleRight3 = 323 + (int) eggShellMoveRight;
+            // // int colorEggcircleRight4 = 290 + (int) eggShellMoveRight;
 
-        //     if (colorEggShellRight1 >= 599 | colorEggShellRight3 >= 599) {
-        //     colorEggShellRight1 = 599;
-        //     //colorEggcircleRight1 = 599;
-        //     //colorEggcircleRight4 = 599;
+            // if (colorEggShellRight1 >= 599 | colorEggShellRight3 >= 599) {
+            // colorEggShellRight1 = 599;
+            // //colorEggcircleRight1 = 599;
+            // //colorEggcircleRight4 = 599;
 
-        //     buffer = floodFill(buffer, colorEggShellRight1, 203, pinkegg3, Color.white);
-        //     // buffer = floodFill(buffer, colorEggcircleRight1, 221, pinkegg1, Color.white);
-        //     //buffer = floodFill(buffer, colorEggcircleRight4, 219, pinkegg2, Color.white);
+            // buffer = floodFill(buffer, colorEggShellRight1, 203, pinkegg3, Color.white);
+            // // buffer = floodFill(buffer, colorEggcircleRight1, 221, pinkegg1,
+            // Color.white);
+            // //buffer = floodFill(buffer, colorEggcircleRight4, 219, pinkegg2,
+            // Color.white);
 
-        //     } else {
-        //     buffer = floodFill(buffer, colorEggShellRight1, 210, Color.WHITE, pinkegg3);
-        //     //buffer = floodFill(buffer, colorEggcircleRight1, 221, Color.WHITE, pinkegg1);
-        //     //buffer = floodFill(buffer, colorEggcircleRight4, 219, Color.WHITE, pinkegg2);
+            // } else {
+            // buffer = floodFill(buffer, colorEggShellRight1, 210, Color.WHITE, pinkegg3);
+            // //buffer = floodFill(buffer, colorEggcircleRight1, 221, Color.WHITE,
+            // pinkegg1);
+            // //buffer = floodFill(buffer, colorEggcircleRight4, 219, Color.WHITE,
+            // pinkegg2);
 
-        //     }
-        //     if (colorEggShellRight2 >= 599) {
-        //     colorEggShellRight2 = 599;
-        //     //colorEggcircleRight2 = 599;
+            // }
+            // if (colorEggShellRight2 >= 599) {
+            // colorEggShellRight2 = 599;
+            // //colorEggcircleRight2 = 599;
 
-        //     buffer = floodFill(buffer, colorEggShellRight2, 310, pinkegg3, Color.white);
-        //     //buffer = floodFill(buffer, colorEggcircleRight2, 300, pinkegg1, Color.white);
+            // buffer = floodFill(buffer, colorEggShellRight2, 310, pinkegg3, Color.white);
+            // //buffer = floodFill(buffer, colorEggcircleRight2, 300, pinkegg1,
+            // Color.white);
 
-        //     } else {
-        //     buffer = floodFill(buffer, colorEggShellRight2, 310, Color.WHITE, pinkegg3);
-        //     //buffer = floodFill(buffer, colorEggcircleRight2, 300, Color.WHITE, pinkegg1);
+            // } else {
+            // buffer = floodFill(buffer, colorEggShellRight2, 310, Color.WHITE, pinkegg3);
+            // //buffer = floodFill(buffer, colorEggcircleRight2, 300, Color.WHITE,
+            // pinkegg1);
 
-        //     }
-        //     if (colorEggShellRight3 >= 599) {
-        //     colorEggShellRight3 = 599;
-        //     //colorEggcircleRight3 = 599;
+            // }
+            // if (colorEggShellRight3 >= 599) {
+            // colorEggShellRight3 = 599;
+            // //colorEggcircleRight3 = 599;
 
-        //     buffer = floodFill(buffer, colorEggShellRight3, 395, pinkegg3, Color.white);
-        //     //buffer = floodFill(buffer, colorEggcircleRight3, 382, pinkegg1, Color.white);
+            // buffer = floodFill(buffer, colorEggShellRight3, 395, pinkegg3, Color.white);
+            // //buffer = floodFill(buffer, colorEggcircleRight3, 382, pinkegg1,
+            // Color.white);
 
-        //     } else {
-        //     buffer = floodFill(buffer, colorEggShellRight3, 395, Color.WHITE, pinkegg3);
-        //    // buffer = floodFill(buffer, colorEggcircleRight3, 382, Color.WHITE, pinkegg1);
+            // } else {
+            // buffer = floodFill(buffer, colorEggShellRight3, 395, Color.WHITE, pinkegg3);
+            // // buffer = floodFill(buffer, colorEggcircleRight3, 382, Color.WHITE,
+            // pinkegg1);
 
-        //     }
+            // }
 
             g2.setTransform(originalTransform);
 
@@ -478,7 +486,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             bezierCurve(g2, 300, 280, 312, 287, 308, 310);
             bezierCurve(g2, 308, 310, 308, 336, 273, 349);
 
-            bezierCurve(g2, 276,348,257, 329 , 284 , 267);
+            bezierCurve(g2, 276, 348, 257, 329, 284, 267);
 
             // ลำตัวไม่มีรายละเอียดด้านใน
             // ปีกซ้ายของนก
@@ -520,20 +528,61 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             // รายละเอียดเท้าขวานก
 
             // ดวงอาทิตย์
+            Color sunYellow = new Color(255, 254, 110);
+            Color sunShadow = new Color(245, 227, 21);
+            Color sunBorderCircle = new Color(205, 105, 26);
+            Color sunAroundCircle = new Color(247, 135, 35);
+            Color sunBoderAroundCircle = new Color(175, 88, 23);
+
+            g2.setColor(sunBorderCircle);
             g2.setTransform(originalTransform);
             midpointCircle(g2, 518, 65, 25);
-            createTrianglePolygon(g2, 489, 57, 471, 65, 489, 73);
-            createTrianglePolygon(g2, 489, 73, 477, 87, 495, 85);
-            createTrianglePolygon(g2, 495, 85, 493, 104, 508, 94);
-            createTrianglePolygon(g2, 508, 94, 516, 110, 524, 95);
-            createTrianglePolygon(g2, 524, 95, 538, 105, 538, 89);
-            createTrianglePolygon(g2, 538, 89, 557, 90, 547, 76);
-            createTrianglePolygon(g2, 547, 76, 563, 68, 548, 60);
-            createTrianglePolygon(g2, 548, 60, 558, 45, 541, 48);
-            createTrianglePolygon(g2, 541, 48, 542, 28, 529, 38);
-            createTrianglePolygon(g2, 529, 38, 519, 21, 512, 38);
-            createTrianglePolygon(g2, 512, 38, 496, 26, 497, 44);
-            createTrianglePolygon(g2, 497, 44, 479, 42, 489, 57);
+            buffer = floodFill(buffer, 519, 65, Color.white, sunYellow);
+
+            g2.setColor(sunShadow);
+            bezierCurve(g2, 495, 68, 506, 81, 520, 81);
+            bezierCurve(g2, 520, 81, 538, 80, 542, 68);
+            buffer = floodFill(buffer, 519, 85, sunYellow, sunShadow);
+
+            g2.setColor(sunAroundCircle);
+            // createTrianglePolygon(g2, 489, 57, 471, 65, 489, 73);
+            // createTrianglePolygon(g2, 489, 73, 477, 87, 495, 85);
+            // createTrianglePolygon(g2, 495, 85, 493, 104, 508, 94);
+            // createTrianglePolygon(g2, 508, 94, 516, 110, 524, 95);
+            // createTrianglePolygon(g2, 524, 95, 538, 105, 538, 89);
+            // createTrianglePolygon(g2, 538, 89, 557, 90, 547, 76);
+            // createTrianglePolygon(g2, 547, 76, 563, 68, 548, 60);
+            // createTrianglePolygon(g2, 548, 60, 558, 45, 541, 48);
+            // createTrianglePolygon(g2, 541, 48, 542, 28, 529, 38);
+            // createTrianglePolygon(g2, 529, 38, 519, 21, 512, 38);
+            // createTrianglePolygon(g2, 512, 38, 496, 26, 497, 44);
+            // createTrianglePolygon(g2, 497, 44, 479, 42, 489, 57);
+            g2.setColor(sunBoderAroundCircle);
+            bresenhamLine(g2, 490, 59, 481, 44);
+            bresenhamLine(g2, 481, 44, 498, 44);
+            bresenhamLine(g2, 498, 44, 498, 26);
+            bresenhamLine(g2, 498, 26, 513, 38);
+            bresenhamLine(g2, 513, 38, 521, 22);
+            bresenhamLine(g2, 521, 22, 531, 40);
+            bresenhamLine(g2, 531, 38, 543, 31);
+            bresenhamLine(g2, 543, 31, 543, 50);
+            bresenhamLine(g2, 543, 50, 559, 48);
+            bresenhamLine(g2, 559, 48, 550, 63);
+            bresenhamLine(g2, 550, 63, 564, 70);
+            bresenhamLine(g2, 564, 70, 549, 78);
+            bresenhamLine(g2, 549, 78, 559, 93);
+            bresenhamLine(g2, 559, 93, 541, 91);
+            bresenhamLine(g2, 541, 91, 540, 107);
+            bresenhamLine(g2, 540, 107, 526, 97);
+            bresenhamLine(g2, 526, 97, 518, 112);
+            bresenhamLine(g2, 518, 112, 510, 96);
+            bresenhamLine(g2, 510, 96, 495, 105);
+            bresenhamLine(g2, 495, 105, 496, 88);
+            bresenhamLine(g2, 496, 88, 478, 89);
+            bresenhamLine(g2, 478, 89, 490, 76);
+            bresenhamLine(g2, 490, 76, 473, 68);
+            bresenhamLine(g2, 473, 68, 490, 59);
+            buffer = floodFill(buffer, 491, 50, Color.white, sunAroundCircle);
 
             if (totalTime >= 3500) {
 
@@ -543,6 +592,11 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                 g2.setTransform(moveCloud);
                 // เมฆด้านบน
+                // สีเมฆและท้องฟ้า
+                Color cloudBorder = new Color(193, 227, 244);
+                Color cloudBlue = new Color(218, 242, 254);
+                Color sky = new Color(150,227,255);
+                g2.setColor(cloudBorder);
                 bezierCurve(g2, 498, 130, 480, 128, 479, 144);
                 bezierCurve(g2, 479, 144, 463, 146, 473, 157);
                 bezierCurve(g2, 473, 157, 476, 163, 488, 159);
@@ -554,12 +608,20 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bezierCurve(g2, 533, 130, 529, 120, 514, 120);
                 bezierCurve(g2, 514, 120, 502, 121, 498, 130);
 
+                g2.setColor(cloudBlue);
+                bezierCurve(g2, 480, 143, 494, 152, 504, 146);
+                bezierCurve(g2, 504, 146, 515, 155, 527, 147);
+                bezierCurve(g2, 527, 147, 535, 153, 542, 147);
+                bezierCurve(g2, 542, 147, 551, 149, 556, 143);
+                // ลงสีเมฆด้านบน
+                buffer = floodFill(buffer, 553+(int)cloudMove1, 154, Color.white, cloudBlue);
                 g2.setTransform(originalTransform);
 
                 AffineTransform moveCloud2 = new AffineTransform(1, 0, 0, 1, cloudMove1 * 1.35, 0);
                 g2.setTransform(moveCloud2);
 
                 // เมฆด้านล่าง
+                g2.setColor(cloudBorder);
                 bezierCurve(g2, 498, 459, 480, 457, 479, 473);
                 bezierCurve(g2, 479, 473, 463, 475, 473, 486);
                 bezierCurve(g2, 473, 486, 476, 492, 488, 488);
@@ -571,7 +633,17 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bezierCurve(g2, 533, 459, 529, 449, 514, 449);
                 bezierCurve(g2, 514, 449, 502, 450, 498, 459);
 
-            }
+                g2.setColor(cloudBlue);
+                bezierCurve(g2, 480, 472, 494, 481, 504, 475);
+                bezierCurve(g2, 504, 475, 515, 484, 527, 476);
+                bezierCurve(g2, 527, 476, 535, 482, 542, 476);
+                bezierCurve(g2, 542, 476, 551, 478, 556, 472);
+                // ลงสีเมฆด้านล่าง
+                buffer = floodFill(buffer, 553+(int)((int)cloudMove1*1.35), 478, Color.white, cloudBlue);
+
+                // ลงสีท้องฟ้า
+                // buffer = floodFill(buffer, 349, 62, Color.white, sky);
+            }   
 
             g2.setTransform(originalTransform);
 
@@ -677,16 +749,20 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
         // กันหลุด frame 600 600
         if (x >= 600) {
-            x = 600;
-        }  
+            // x = 600;
+            return m;
+        }
         if (x <= 0) {
-            x = 0;
+            // x = 0;
+            return m;
         }
         if (y >= 600) {
-            y = 600;
-        }  
+            // y = 600;
+            return m;
+        }
         if (y <= 0) {
-            y = 0;
+            // y = 0;
+            return m;
         }
 
         if (m.getRGB(x, y) == target_colour.getRGB()) {
@@ -748,14 +824,14 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         int dy = 2 * y;
 
         while (x <= y) {
-            plot(g, x + xc, y + yc, 3);
-            plot(g, -x + xc, y + yc, 3);
-            plot(g, x + xc, -y + yc, 3);
-            plot(g, -x + xc, -y + yc, 3);
-            plot(g, y + xc, x + yc, 3);
-            plot(g, -y + xc, x + yc, 3);
-            plot(g, y + xc, -x + yc, 3);
-            plot(g, -y + xc, -x + yc, 3);
+            plot(g, x + xc, y + yc, 2);
+            plot(g, -x + xc, y + yc, 2);
+            plot(g, x + xc, -y + yc, 2);
+            plot(g, -x + xc, -y + yc, 2);
+            plot(g, y + xc, x + yc, 2);
+            plot(g, -y + xc, x + yc, 2);
+            plot(g, y + xc, -x + yc, 2);
+            plot(g, -y + xc, -x + yc, 2);
 
             x++;
             dx += 2;
