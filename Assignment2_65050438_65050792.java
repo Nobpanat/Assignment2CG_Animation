@@ -197,14 +197,14 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         setPlotSize(1);
 
         // egg color
-        buffer = floodFill(buffer, 321, 450 + (int) eggMove, Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 220, 430 + (int) eggMove, Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 243, 400 + (int) eggMove, Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 330, 380 + (int) eggMove, Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 256, 506 + (int) eggMove, Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 317, 542 + (int) eggMove, Color.WHITE, pinkegg1);
-        buffer = floodFill(buffer, 272, 377 + (int) eggMove, Color.WHITE, pinkegg2);
-        buffer = floodFill(buffer, 300, 400 + (int) eggMove, Color.WHITE, pinkegg3);
+        // buffer = floodFill(buffer, 321, 450 + (int) eggMove, Color.WHITE, pinkegg1);
+        // buffer = floodFill(buffer, 220, 430 + (int) eggMove, Color.WHITE, pinkegg1);
+        // buffer = floodFill(buffer, 243, 400 + (int) eggMove, Color.WHITE, pinkegg1);
+        // buffer = floodFill(buffer, 330, 380 + (int) eggMove, Color.WHITE, pinkegg1);
+        // buffer = floodFill(buffer, 256, 506 + (int) eggMove, Color.WHITE, pinkegg1);
+        // buffer = floodFill(buffer, 317, 542 + (int) eggMove, Color.WHITE, pinkegg1);
+        // buffer = floodFill(buffer, 272, 377 + (int) eggMove, Color.WHITE, pinkegg2);
+        // buffer = floodFill(buffer, 300, 400 + (int) eggMove, Color.WHITE, pinkegg3);
 
         // g2.setTransform(originalTransform);
         // ลงสีเปลือกไข่
@@ -254,12 +254,14 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             g2.setColor(pinkegg1);
 
             // รายละเอียดไข่ซีกซ้าย
-            buffer = floodFill(buffer, 300 + (int) eggShellMoveLeft, 263, Color.WHITE, pinkegg3);
-            buffer = floodFill(buffer, 298 + (int) eggShellMoveLeft, 364, Color.WHITE, pinkegg3);
-            buffer = floodFill(buffer, 250 + (int) eggShellMoveLeft, 350, Color.WHITE, pinkegg1);
-            buffer = floodFill(buffer, 213 + (int) eggShellMoveLeft, 278, Color.WHITE, pinkegg1);
-            buffer = floodFill(buffer, 268 + (int) eggShellMoveLeft, 227, Color.WHITE, pinkegg2);
-            buffer = floodFill(buffer, 239 + (int) eggShellMoveLeft, 248, Color.WHITE, pinkegg2);
+            buffer = floodFill(buffer, 289 + (int) eggShellMoveLeft, 197, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 312 + (int) eggShellMoveLeft, 273, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 313 + (int) eggShellMoveLeft, 370, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 260 + (int) eggShellMoveLeft, 335, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 230 + (int) eggShellMoveLeft, 273, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 246 + (int) eggShellMoveLeft, 241, Color.WHITE, pinkegg2);
+            buffer = floodFill(buffer, 282 + (int) eggShellMoveLeft, 209, Color.WHITE, pinkegg2);
+           
 
             // buffer = floodFill(buffer, 267 + (int) eggShellMoveLeft, 342, Color.WHITE,
             // pinkegg1);
@@ -344,13 +346,14 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             g2.setColor(pinkegg1);
 
             // รายละเอียดไข่ ซีกขวา
-            buffer = floodFill(buffer, 279 + (int) eggShellMoveRight, 227, Color.WHITE, pinkegg2);
-            buffer = floodFill(buffer, 333 + (int) eggShellMoveRight, 300, Color.WHITE, pinkegg1);
-            buffer = floodFill(buffer, 323 + (int) eggShellMoveRight, 382, Color.WHITE, pinkegg1);
-            buffer = floodFill(buffer, 326 + (int) eggShellMoveRight, 218, Color.WHITE, pinkegg1);
-            buffer = floodFill(buffer, 302 + (int) eggShellMoveRight, 203, Color.WHITE, pinkegg3);
-            buffer = floodFill(buffer, 303 + (int) eggShellMoveRight, 310, Color.WHITE, pinkegg3);
-            buffer = floodFill(buffer, 306 + (int) eggShellMoveRight, 395, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 330 + (int) eggShellMoveRight, 285, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 280 + (int) eggShellMoveRight, 228, Color.WHITE, pinkegg2);
+            buffer = floodFill(buffer, 319 + (int) eggShellMoveRight, 225, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 324 + (int) eggShellMoveRight, 376, Color.WHITE, pinkegg1);
+            buffer = floodFill(buffer, 302 + (int) eggShellMoveRight, 407, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 285 + (int) eggShellMoveRight, 316, Color.WHITE, pinkegg3);
+            buffer = floodFill(buffer, 291 + (int) eggShellMoveRight, 236, Color.WHITE, pinkegg3);
+            // buffer = floodFill(buffer, 306 + (int) eggShellMoveRight, 395, Color.WHITE, pinkegg3);
             // buffer = floodFill(buffer, 296 + (int) eggShellMoveRight, 310, Color.WHITE,
             // pinkegg3);
 
