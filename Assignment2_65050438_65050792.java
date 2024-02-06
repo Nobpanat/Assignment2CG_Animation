@@ -97,12 +97,14 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         g2.setColor(Color.WHITE);
         g2.fillRect(0, 0, 600, 600);
 
+        // System Design
         Color pinkegg1 = new Color(237, 40, 128);
         Color pinkegg2 = new Color(235, 146, 189);
         Color pinkegg3 = new Color(239, 79, 147);
         Color eye1 = new Color(181, 201, 229);
         Color eye2 = new Color(26, 54, 99);
         Color mouse = new Color(147, 50, 30);
+        Color nose = new Color(254,254,151);
         Color BodyandHead1 = new Color(195, 45, 45);
         Color BodyandHead2 = new Color(231, 66, 52);
         Color Leg1 = new Color(76, 93, 112);
@@ -466,8 +468,8 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bezierCurve(g2, 318, 229, 314, 221, 316, 220);
                 bezierCurve(g2, 318, 229, 321, 245, 338, 241);
 
+                int stepWing = 0;
                 g2.setColor(Color.BLACK);
-
                 if (totalTime >= 3700) {
                     // g2.setTransform(originalTransform);
 
@@ -484,6 +486,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                         moveLegS3.concatenate(moveLegS4);
                         g2.setTransform(moveLegS3);
+                        stepWing = 1;
                     } else {
                         // g2.setTransform(originalTransform);
                         AffineTransform moveWing1 = new AffineTransform(
@@ -495,6 +498,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                         moveWing1.concatenate(moveWing2);
                         g2.setTransform(moveWing1);
+                        stepWing = 2;
                     }
 
                 }
@@ -533,7 +537,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bezierCurve(g2, 272, 333, 233, 357, 258, 328);
                 bezierCurve(g2, 258, 328, 249, 332, 250, 328);
 
-                if (totalTime >= 3700) {
+                if (totalTime >= 3200 ) {
                     g2.setTransform(originalTransform);
 
                     AffineTransform moveLegS3 = new AffineTransform(
@@ -545,6 +549,9 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                     moveLegS3.concatenate(moveLegS4);
                     g2.setTransform(moveLegS3);
+                    if(totalTime >=3200 && totalTime < 3700){
+                        stepWing = 1;
+                    }
                 }
 
                 // ลำตัวนก
@@ -553,8 +560,8 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bezierCurve(g2, 341, 338, 361, 321, 360, 312);
                 bezierCurve(g2, 360, 312, 367, 283, 358, 270);
 
-                bezierCurve(g2, 362, 296, 367, 296, 367, 294);
-                bezierCurve(g2, 367, 280, 363, 281, 362, 280);
+                // bezierCurve(g2, 362, 296, 367, 296, 367, 294);
+                // bezierCurve(g2, 367, 280, 363, 281, 362, 280);
 
                 // ลำตัวส่วนชิดปีกขวานก
                 // bresenhamLine(g2, 302, 273, 300, 280);
@@ -572,8 +579,8 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                 // ลำตัวไม่มีรายละเอียดด้านใน
                 // ปีกซ้ายของนก
-                bezierCurve(g2, 360, 262, 367, 265, 369, 284);
-                bezierCurve(g2, 369, 284, 369, 303, 360, 312);
+                // bezierCurve(g2, 360, 262, 367, 265, 369, 284);
+                // bezierCurve(g2, 369, 284, 369, 303, 360, 312);
 
                 // ต้นขาซ้ายของนก
                 bezierCurve(g2, 341, 338, 346, 353, 335, 359);
@@ -620,11 +627,94 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bezierCurve(g2, 302, 379, 312, 384, 309, 390);
                 bezierCurve(g2, 308, 378, 315, 378, 319, 385);
 
-                // ลงสีจุดที่ไม่ตามตัวนก
-                buffer = floodFill(buffer, 340, 316, Color.WHITE, BodyandHead2);
-                buffer = floodFill(buffer, 337, 260, Color.WHITE, BodyandHead2);
-                buffer = floodFill(buffer, 318, 290, Color.WHITE, BodyandHead2);
-                buffer = floodFill(buffer, 281, 329, Color.WHITE, bluewing2);
+                // ลงสีstepWing0
+                if(stepWing == 0){
+                    
+                    // ลงสีตัวนกกับหัวนกสีแดง
+                    buffer = floodFill(buffer, 340, 316, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 337, 260, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 318, 290, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 330, 350, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 293, 356, Color.WHITE, BodyandHead2);
+
+                    // ลงสีเท้านก
+                    buffer = floodFill(buffer, 293, 374, Color.WHITE, Leg2);
+                    buffer = floodFill(buffer, 327, 368, Color.WHITE, Leg2);
+
+                    // ลงสีพื้นหลังระหว่างขานก
+                    buffer = floodFill(buffer, 312, 356, Color.WHITE, sky);
+                    buffer = floodFill(buffer, 281, 329, Color.WHITE, bluewing2);
+
+                    // ลงสีปีกนก
+                    buffer = floodFill(buffer, 286, 290, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 278, 314, Color.WHITE, yellowwing);
+                    buffer = floodFill(buffer, 256, 337, Color.WHITE, bluewing2);
+                    buffer = floodFill(buffer, 263, 345, Color.WHITE, bluewing2);
+                    buffer = floodFill(buffer, 236, 352, Color.WHITE, bluewing2);
+
+                    // ลงสึปากหรือจมูกนก
+                    buffer = floodFill(buffer, 341, 218, Color.WHITE, nose);
+                    buffer = floodFill(buffer, 328, 235, Color.WHITE, nose); 
+
+                    // ลงสีตานก
+                    buffer = floodFill(buffer, 300, 201, Color.WHITE, eye2);
+                    buffer = floodFill(buffer, 335, 193, Color.WHITE, eye2);
+
+                }
+
+                if(stepWing == 1){
+                    // ลงสีหัวนก
+                    buffer = floodFill(buffer, 357, 253, Color.WHITE, BodyandHead2);
+                    // ลงสีตา
+                    buffer = floodFill(buffer, 376, 216, Color.WHITE, eye2);
+                    buffer = floodFill(buffer, 408, 226, Color.WHITE, eye2);
+                    // ลงสีปากหรือจมูกนก
+                    buffer = floodFill(buffer, 402, 253, Color.WHITE, nose);
+                    buffer = floodFill(buffer, 383, 259, Color.WHITE, nose);
+                    // ลงสีลำตัวนก
+                    buffer = floodFill(buffer, 347, 323, Color.WHITE, BodyandHead2);
+                    // ลงสีขานก
+                    buffer = floodFill(buffer, 325, 360, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 289, 346, Color.WHITE, BodyandHead2);
+                    // ลงสีเท้านก
+                    buffer = floodFill(buffer, 282, 364, Color.WHITE, Leg2);
+                    buffer = floodFill(buffer, 317, 377, Color.WHITE, Leg2);
+                    // ลงสีพื้นหลังระหว่างขานก
+                    buffer = floodFill(buffer, 297, 363, Color.WHITE, sky);
+                    // ลงสีปีกนก
+                    buffer = floodFill(buffer, 318, 285, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 300, 304, Color.WHITE, yellowwing);
+                    buffer = floodFill(buffer, 295, 321, Color.WHITE, bluewing2);
+                    buffer = floodFill(buffer, 275, 323, Color.WHITE, bluewing2);
+                    buffer = floodFill(buffer, 279, 309, Color.WHITE, bluewing2);
+                    buffer = floodFill(buffer, 245, 323, Color.WHITE, bluewing2);
+                }
+                if(stepWing == 2){
+                    // ลงสีหัวนก
+                    buffer = floodFill(buffer, 357, 253, Color.WHITE, BodyandHead2);
+                    // ลงสีตา
+                    buffer = floodFill(buffer, 376, 216, Color.WHITE, eye2);
+                    buffer = floodFill(buffer, 408, 226, Color.WHITE, eye2);
+                    // ลงสีปากหรือจมูกนก
+                    buffer = floodFill(buffer, 402, 253, Color.WHITE, nose);
+                    buffer = floodFill(buffer, 383, 259, Color.WHITE, nose);
+                    // ลงสีลำตัวนก
+                    buffer = floodFill(buffer, 347, 323, Color.WHITE, BodyandHead2);
+                    // ลงสีขานก
+                    buffer = floodFill(buffer, 325, 360, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 289, 346, Color.WHITE, BodyandHead2);
+                    // ลงสีเท้านก
+                    buffer = floodFill(buffer, 282, 364, Color.WHITE, Leg2);
+                    buffer = floodFill(buffer, 317, 377, Color.WHITE, Leg2);
+                    // ลงสีพื้นหลังระหว่างขานก
+                    buffer = floodFill(buffer, 297, 363, Color.WHITE, sky);
+                    // ลงสีปีกนก
+                    buffer = floodFill(buffer, 326, 288, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 343, 284, Color.WHITE, BodyandHead2);
+                    buffer = floodFill(buffer, 304, 295, Color.WHITE, yellowwing);
+                    buffer = floodFill(buffer, 292, 304, Color.WHITE, bluewing2);
+                    buffer = floodFill(buffer, 247, 278, Color.WHITE, bluewing2);
+                }
 
                 // ดวงอาทิตย์
                 Color sunYellow = new Color(255, 254, 110);
