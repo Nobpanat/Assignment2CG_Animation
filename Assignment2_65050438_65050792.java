@@ -346,6 +346,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             g2.setColor(pinkegg1);
 
             // รายละเอียดไข่ ซีกขวา
+            buffer = floodFill(buffer, 320 + (int) eggShellMoveRight, 224, Color.WHITE, pinkegg1);
             buffer = floodFill(buffer, 330 + (int) eggShellMoveRight, 285, Color.WHITE, pinkegg1);
             buffer = floodFill(buffer, 280 + (int) eggShellMoveRight, 228, Color.WHITE, pinkegg2);
             buffer = floodFill(buffer, 319 + (int) eggShellMoveRight, 225, Color.WHITE, pinkegg1);
