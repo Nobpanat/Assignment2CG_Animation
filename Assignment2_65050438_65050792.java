@@ -65,7 +65,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                     eggVelocityY = 0;
                 }
             }
-            if(elapsedTotalTime >= 2300){
+            if(totalTime >= 2300){
 
                 // การเคลื่อนที่ของเปลือกไข่ซ้ายและขวา
                 eggShellMoveLeft += eggShellVelocityLeft * elapsedTime / 1000.0;
