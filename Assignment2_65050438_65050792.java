@@ -25,10 +25,10 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
     // การเคลื่อนที่เมฆ
     double cloudMove1 = 0;
-    double cloudMove2 = 0;
+ 
     // ความเร็วเมฆ
     double cloudVelocity = -100;
-
+    // เวลาทั้งหมด
     double totalTime = 0;
 
     public static void main(String[] args) {
@@ -57,9 +57,10 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             totalTime = elapsedTotalTime;
 
             
-            // ครบ1วินาทีหยุดเคลื่อนเปลือกไข่ขึ้นไป
+            // ครบ1วินาทีเริ่มเปลือกไข่เคลื่อนที่
             if (elapsedTotalTime >= 1000) {
                 eggMove += eggVelocityY * elapsedTime / 1000.0;
+                // ครบ1วินาทีหยุดเคลื่อนเปลือกไข่ขึ้นไป
                 if(elapsedTotalTime >= 2000){
 
                     eggVelocityY = 0;
@@ -76,13 +77,10 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
             // การเคลื่อนที่ของเมฆ
             cloudMove1 += cloudVelocity * elapsedTime / 1000.0;
-            cloudMove2 += cloudVelocity * elapsedTime / 1000.0;
+          
 
             if (cloudMove1 <= -600) {
                 cloudMove1 = 0;
-            }
-            if (cloudMove2 <= -600) {
-                cloudMove2 = 0;
             }
 
             // Display
@@ -196,17 +194,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
         g2.setColor(Color.black);
         setPlotSize(1);
 
-        // egg color
-        // buffer = floodFill(buffer, 321, 450 + (int) eggMove, Color.WHITE, pinkegg1);
-        // buffer = floodFill(buffer, 220, 430 + (int) eggMove, Color.WHITE, pinkegg1);
-        // buffer = floodFill(buffer, 243, 400 + (int) eggMove, Color.WHITE, pinkegg1);
-        // buffer = floodFill(buffer, 330, 380 + (int) eggMove, Color.WHITE, pinkegg1);
-        // buffer = floodFill(buffer, 256, 506 + (int) eggMove, Color.WHITE, pinkegg1);
-        // buffer = floodFill(buffer, 317, 542 + (int) eggMove, Color.WHITE, pinkegg1);
-        // buffer = floodFill(buffer, 272, 377 + (int) eggMove, Color.WHITE, pinkegg2);
-        // buffer = floodFill(buffer, 300, 400 + (int) eggMove, Color.WHITE, pinkegg3);
 
-        // g2.setTransform(originalTransform);
         // ลงสีเปลือกไข่
         buffer = floodFill(buffer, 266, 432 + (int) eggMove, Color.WHITE, new Color(253, 75, 149));
 
@@ -263,54 +251,6 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             buffer = floodFill(buffer, 282 + (int) eggShellMoveLeft, 209, Color.WHITE, pinkegg2);
            
 
-            // buffer = floodFill(buffer, 267 + (int) eggShellMoveLeft, 342, Color.WHITE,
-            // pinkegg1);
-            // int colorEggShellLeft1 = 314 + (int) eggShellMoveLeft;
-            // int colorEggShellLeft2 = 288 + (int) eggShellMoveLeft;
-            // int colorEggShellLeft3 = 314 + (int) eggShellMoveLeft;
-            // int colorEggcircleLeft1 = 266 + (int) eggShellMoveLeft;
-            // int colorEggcircleLeft2 = 225 + (int) eggShellMoveLeft;
-            // int colorEggcircleLeft3 = 243 + (int) eggShellMoveLeft;
-            // int colorEggcircleLeft4 = 254 + (int) eggShellMoveLeft;
-
-            // if (colorEggShellLeft1 <= 1 | colorEggShellLeft3 <= 1) {
-            // colorEggShellLeft1 = 1;
-            // colorEggcircleLeft1 = 1;
-            // colorEggcircleLeft2 = 1;
-            // colorEggcircleLeft3 = 1;
-            // colorEggcircleLeft4 = 1;
-
-            // buffer = floodFill(buffer, colorEggShellLeft1, 271, pinkegg3, Color.white);
-            // buffer = floodFill(buffer, colorEggcircleLeft1, 342, pinkegg1, Color.white);
-            // buffer = floodFill(buffer, colorEggcircleLeft2, 342, pinkegg1, Color.white);
-            // buffer = floodFill(buffer, colorEggcircleLeft3, 241, pinkegg2, Color.white);
-            // buffer = floodFill(buffer, colorEggcircleLeft4, 231, pinkegg2, Color.white);
-
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellLeft1, 271, Color.WHITE, pinkegg3);
-            // buffer = floodFill(buffer, colorEggcircleLeft1, 342, Color.WHITE, pinkegg1);
-            // buffer = floodFill(buffer, colorEggcircleLeft2, 271, Color.WHITE, pinkegg1);
-            // buffer = floodFill(buffer, colorEggcircleLeft3, 241, Color.WHITE, pinkegg2);
-            // buffer = floodFill(buffer, colorEggcircleLeft4, 231, Color.WHITE, pinkegg2);
-
-            // }
-            // if (colorEggShellLeft2 <= 1) {
-            // colorEggShellLeft2 = 1;
-
-            // buffer = floodFill(buffer, colorEggShellLeft2, 196, pinkegg3, Color.white);
-
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellLeft2, 196, Color.WHITE, pinkegg3);
-
-            // }
-            // if (colorEggShellLeft3 <= 1) {
-            // colorEggShellLeft3 = 1;
-            // buffer = floodFill(buffer, colorEggShellLeft3, 370, pinkegg3, Color.white);
-
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellLeft3, 370, Color.WHITE, pinkegg3);
-            // }
-
             g2.setTransform(originalTransform);
 
             // เปลือกไข่ ซึกขวา
@@ -354,68 +294,10 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
             buffer = floodFill(buffer, 302 + (int) eggShellMoveRight, 407, Color.WHITE, pinkegg3);
             buffer = floodFill(buffer, 285 + (int) eggShellMoveRight, 316, Color.WHITE, pinkegg3);
             buffer = floodFill(buffer, 291 + (int) eggShellMoveRight, 236, Color.WHITE, pinkegg3);
-            // buffer = floodFill(buffer, 306 + (int) eggShellMoveRight, 395, Color.WHITE, pinkegg3);
-            // buffer = floodFill(buffer, 296 + (int) eggShellMoveRight, 310, Color.WHITE,
-            // pinkegg3);
-
-            // int colorEggShellRight1 = 302 + (int) eggShellMoveRight;
-            // int colorEggShellRight2 = 303 + (int) eggShellMoveRight;
-            // int colorEggShellRight3 = 306 + (int) eggShellMoveRight;
-            // // int colorEggcircleRight1 = 321 + (int) eggShellMoveRight;
-            // // int colorEggcircleRight2 = 333 + (int) eggShellMoveRight;
-            // // int colorEggcircleRight3 = 323 + (int) eggShellMoveRight;
-            // // int colorEggcircleRight4 = 290 + (int) eggShellMoveRight;
-
-            // if (colorEggShellRight1 >= 599 | colorEggShellRight3 >= 599) {
-            // colorEggShellRight1 = 599;
-            // //colorEggcircleRight1 = 599;
-            // //colorEggcircleRight4 = 599;
-
-            // buffer = floodFill(buffer, colorEggShellRight1, 203, pinkegg3, Color.white);
-            // // buffer = floodFill(buffer, colorEggcircleRight1, 221, pinkegg1,
-            // Color.white);
-            // //buffer = floodFill(buffer, colorEggcircleRight4, 219, pinkegg2,
-            // Color.white);
-
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellRight1, 210, Color.WHITE, pinkegg3);
-            // //buffer = floodFill(buffer, colorEggcircleRight1, 221, Color.WHITE,
-            // pinkegg1);
-            // //buffer = floodFill(buffer, colorEggcircleRight4, 219, Color.WHITE,
-            // pinkegg2);
-
-            // }
-            // if (colorEggShellRight2 >= 599) {
-            // colorEggShellRight2 = 599;
-            // //colorEggcircleRight2 = 599;
-
-            // buffer = floodFill(buffer, colorEggShellRight2, 310, pinkegg3, Color.white);
-            // //buffer = floodFill(buffer, colorEggcircleRight2, 300, pinkegg1,
-            // Color.white);
-
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellRight2, 310, Color.WHITE, pinkegg3);
-            // //buffer = floodFill(buffer, colorEggcircleRight2, 300, Color.WHITE,
-            // pinkegg1);
-
-            // }
-            // if (colorEggShellRight3 >= 599) {
-            // colorEggShellRight3 = 599;
-            // //colorEggcircleRight3 = 599;
-
-            // buffer = floodFill(buffer, colorEggShellRight3, 395, pinkegg3, Color.white);
-            // //buffer = floodFill(buffer, colorEggcircleRight3, 382, pinkegg1,
-            // Color.white);
-
-            // } else {
-            // buffer = floodFill(buffer, colorEggShellRight3, 395, Color.WHITE, pinkegg3);
-            // // buffer = floodFill(buffer, colorEggcircleRight3, 382, Color.WHITE,
-            // pinkegg1);
-
-            // }
+     
 
             g2.setTransform(originalTransform);
-
+            // ถ้าเวลา2.6วินาทีแสดงนก
             if (totalTime >= 2600) {
 
                 if (totalTime >= 3200) {
@@ -463,7 +345,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                 bezierCurve(g2, 326, 192, 329, 186, 337, 188);
                 bezierCurve(g2, 337, 188, 344, 189, 343, 198);
-                // bezierCurve(g2, 343,198,334, 194 , 328 , 198);
+        
                 g2.setColor(mouse);
 
                 bezierCurve(g2, 329, 200, 363, 195, 362, 227);
@@ -474,12 +356,14 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                 int stepWing = 0;
                 g2.setColor(Color.BLACK);
-                if (totalTime >= 3700) {
-                    // g2.setTransform(originalTransform);
 
+                // เวลา3.7วินาทีขยับปีกนก
+                if (totalTime >= 3700) {
+                   
+                    // mod เพื่อtransform ครั้งละ0.5วินาทีขยับปีกนก
                     if ((totalTime / 1000.0) % 2 >= 0 && (totalTime / 1000.0) % 2 <= 0.5
                             || (totalTime / 1000.0) % 2 >= 1 && (totalTime / 1000.0) % 2 <= 1.5) {
-                        // g2.setTransform(originalTransform);
+                        
 
                         AffineTransform moveLegS3 = new AffineTransform(
                                 Math.cos(Math.toRadians(30)), Math.sin(Math.toRadians(30)),
@@ -541,6 +425,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bezierCurve(g2, 272, 333, 233, 357, 258, 328);
                 bezierCurve(g2, 258, 328, 249, 332, 250, 328);
 
+                // ถ้าเวลา 3.2 วินาทีขยับนกเอียง 30 องศาตามเข็มนาฬิกา
                 if (totalTime >= 3200 ) {
                     g2.setTransform(originalTransform);
 
@@ -564,16 +449,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bezierCurve(g2, 341, 338, 361, 321, 360, 312);
                 bezierCurve(g2, 360, 312, 367, 283, 358, 270);
 
-                // bezierCurve(g2, 362, 296, 367, 296, 367, 294);
-                // bezierCurve(g2, 367, 280, 363, 281, 362, 280);
-
-                // ลำตัวส่วนชิดปีกขวานก
-                // bresenhamLine(g2, 302, 273, 300, 280);
-                // bezierCurve(g2, 300, 280, 312, 287, 308, 310);
-                // bezierCurve(g2, 308, 310, 308, 336, 273, 349);
-
-                // bezierCurve(g2, 276,348,257, 329 , 284 , 267);
-                // bezierCurve(g2, 277,350,270, 338 , 272 , 328);
+       
 
                 bezierCurve(g2, 277, 350, 271, 341, 272, 339);
                 g2.setColor(bluewing2);
@@ -581,10 +457,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                 g2.setColor(BodyandHead1);
 
-                // ลำตัวไม่มีรายละเอียดด้านใน
-                // ปีกซ้ายของนก
-                // bezierCurve(g2, 360, 262, 367, 265, 369, 284);
-                // bezierCurve(g2, 369, 284, 369, 303, 360, 312);
+   
 
                 // ต้นขาซ้ายของนก
                 bezierCurve(g2, 341, 338, 346, 353, 335, 359);
@@ -666,6 +539,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
                 }
 
+                // ลงสี stepWing 1 ขยับปีกแบบที่1
                 if(stepWing == 1){
                     // ลงสีหัวนก
                     buffer = floodFill(buffer, 357, 253, Color.WHITE, BodyandHead2);
@@ -693,6 +567,8 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                     buffer = floodFill(buffer, 279, 309, Color.WHITE, bluewing2);
                     buffer = floodFill(buffer, 245, 323, Color.WHITE, bluewing2);
                 }
+
+                // ลงสี stepWing 2 ขยับปีกแบบที่2
                 if(stepWing == 2){
                     // ลงสีหัวนก
                     buffer = floodFill(buffer, 357, 253, Color.WHITE, BodyandHead2);
@@ -738,18 +614,7 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 buffer = floodFill(buffer, 519, 85, sunYellow, sunShadow);
 
                 g2.setColor(sunAroundCircle);
-                // createTrianglePolygon(g2, 489, 57, 471, 65, 489, 73);
-                // createTrianglePolygon(g2, 489, 73, 477, 87, 495, 85);
-                // createTrianglePolygon(g2, 495, 85, 493, 104, 508, 94);
-                // createTrianglePolygon(g2, 508, 94, 516, 110, 524, 95);
-                // createTrianglePolygon(g2, 524, 95, 538, 105, 538, 89);
-                // createTrianglePolygon(g2, 538, 89, 557, 90, 547, 76);
-                // createTrianglePolygon(g2, 547, 76, 563, 68, 548, 60);
-                // createTrianglePolygon(g2, 548, 60, 558, 45, 541, 48);
-                // createTrianglePolygon(g2, 541, 48, 542, 28, 529, 38);
-                // createTrianglePolygon(g2, 529, 38, 519, 21, 512, 38);
-                // createTrianglePolygon(g2, 512, 38, 496, 26, 497, 44);
-                // createTrianglePolygon(g2, 497, 44, 479, 42, 489, 57);
+        
                 g2.setColor(sunBoderAroundCircle);
                 bresenhamLine(g2, 490, 59, 481, 44);
                 bresenhamLine(g2, 481, 44, 498, 44);
@@ -776,7 +641,8 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                 bresenhamLine(g2, 490, 76, 473, 68);
                 bresenhamLine(g2, 473, 68, 490, 59);
                 buffer = floodFill(buffer, 491, 50, Color.white, sunAroundCircle);
-
+                
+                // ถ้าเวลา 2.7วินาที เมฆแสดง
                 if (totalTime >= 2700) {
 
                     g2.setTransform(originalTransform);
@@ -834,8 +700,6 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
                     // ลงสีเมฆด้านล่าง
                     buffer = floodFill(buffer, 553 + (int) ((int) cloudMove1 * 1.35), 478, Color.white, cloudBlue);
 
-                    // ลงสีท้องฟ้า
-                    // buffer = floodFill(buffer, 349, 62, Color.white, sky);
                 }
 
             }
@@ -946,19 +810,15 @@ public class Assignment2_65050438_65050792 extends JPanel implements Runnable {
 
         // กันหลุด frame 600 600
         if (x >= 600) {
-            // x = 600;
             return m;
         }
         if (x <= 0) {
-            // x = 0;
             return m;
         }
         if (y >= 600) {
-            // y = 600;
             return m;
         }
         if (y <= 0) {
-            // y = 0;
             return m;
         }
 
